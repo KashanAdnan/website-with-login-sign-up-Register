@@ -8,7 +8,7 @@ var bodyParser = require("body-parser");
 const { SignUpUserModel } = require("./signupdatabase")
 const { AdmissionUserModel } = require("./admissiondatbase")
 const path = require("path");
-var port = 3000 || "https://sir-web.herokuapp.com";
+var port = 3000 || process.env.PORT;
 
 app.use(cors({ origin: "*", credentials: true }));
 app.use(bodyParser.json());
