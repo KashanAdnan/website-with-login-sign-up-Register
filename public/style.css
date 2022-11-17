@@ -538,6 +538,12 @@
 .basiclevel:hover{
     transform: translateY(-50%);
 }
+.intermediatelevel:hover{
+    transform: translateY(50%);
+}
+.advancelevel:hover{
+    transform: translateY(-50%);
+}
 .level{
   font-size: 30px;
   padding: 10px;
