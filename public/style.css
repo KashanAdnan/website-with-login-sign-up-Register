@@ -540,7 +540,7 @@
     height: 580px;
     border-radius: 30px;
     cursor: pointer;
-    transform: translateY(-10%);
+    /* transform: translateY(%); */
 }
 
 .advancelevel {
@@ -559,7 +559,7 @@
 }
 
 .intermediatelevel:hover {
-    transform: translateY(5%);
+    transform: translateY(-10%);
 }
 
 .advancelevel:hover {
