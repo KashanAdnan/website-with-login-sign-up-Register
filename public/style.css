@@ -365,6 +365,7 @@
     background-color: #6868ff;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, .4);
     color: #fff;
+    transition: .3s;
 }
 .classdesc .img-of-desc img {
     width: 500px;
@@ -522,6 +523,7 @@
     height: 580px;
     border-radius: 30px;
     cursor: pointer;
+    transition: 1s;
 }
 
 .fa-circle-xmark {
@@ -531,6 +533,7 @@
 
 .intermediatelevel {
     width: 400px;
+    transition: 1s;
     text-align: center;
     /* padding: 10px 30px; */
     box-shadow: 0 0 10px rgba(0, 0, 0, .4);
@@ -544,6 +547,7 @@
     width: 400px;
     text-align: center;
     /* padding: 10px 30px; */
+    transition: 1s;
     box-shadow: 0 0 10px rgba(0, 0, 0, .4);
     height: 580px;
     border-radius: 30px;
