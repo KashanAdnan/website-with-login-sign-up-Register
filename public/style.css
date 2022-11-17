@@ -555,15 +555,15 @@
 }
 
 .basiclevel:hover {
-    transform: translateY(-30%);
+    transform: translateY(-10%);
 }
 
 .intermediatelevel:hover {
-    transform: translateY(20%);
+    transform: translateY(5%);
 }
 
 .advancelevel:hover {
-    transform: translateY(-30%);
+    transform: translateY(-10%);
 }
 
 .level {
