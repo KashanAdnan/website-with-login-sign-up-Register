@@ -19,6 +19,7 @@
     "mongoose": "^6.7.2",
     "nodemon": "^2.0.20",
     "path": "^0.12.7",
-    "sweetalert": "^2.1.2"
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.6.8"
   }
 }

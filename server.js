@@ -18,21 +18,22 @@ app.post("/signup", (req, res, next) => {
   SignUpUserModel.findOne({ email: req.body.email }, (err, data) => {
     if (err || data) {
       res.status(405).send({
-        message: "Make Another Account !",
+        message: "Please Make Another Account User Already Exists !",
       });
     } else {
+
       var newSignUpPerson = SignUpUserModel({
-        username: req.body.username,
-        email: req.body.email,  
-        phone: req.body.phone,
-        password: req.body.password,
-        confPassword: req.body.confPassword,
+        "username": req.body.username,
+        "email": req.body.email,
+        "phone": req.body.phone,
+        "password": req.body.password,
+        "confPassword": req.body.confPassword,
       });
       newSignUpPerson.save((err, data) => {
         if (!err) {
           console.log(data);
           res.status(200).send({
-            message: "Welcome To Our Website " + req.body.username,
+            message: "Sign Up SuccesFull !",
             data,
           });
           console.log(data);
@@ -47,24 +48,20 @@ app.post("/signup", (req, res, next) => {
 });
 
 
-app.post("/login" , (req,res,next) =>{
-  SignUpUserModel.findOne({email : req.body.email} , (err,data) =>{
-      if (!err ) {
-          if(data.email === req.body.email  &&  data.password === req.body.password){
-              res.status(200).send({
-                  message : "successfully login  !"
-              });
-          }
-        }else if (data.email !== req.body.email) {
-          res.status(405).send({
-              message : "Your Email Is Incorrect !"
-          });
-        }
-        else{            
-          res.status(405).send({
-              message : "User Not Exits"
-          });
-      }
+app.post("/login", (req, res, next) => {
+  SignUpUserModel.findOne({ email: req.body.email }, (err, data) => {
+    if (data.email === req.body.email && data.password === req.body.password) {
+
+      res.status(200).send({
+        message: "Successfully login  !"
+      });
+
+    }
+    else {
+      res.status(405).send({
+        message: "User Not Exits !"
+      });
+    }
   })
 });
 
@@ -72,42 +69,43 @@ app.post("/login" , (req,res,next) =>{
 
 app.post("/admission", (req, res, next) => {
 
-      AdmissionUserModel.findOne({email : req.body.email} , (err,data) =>{
+  AdmissionUserModel.findOne({ email: req.body.email }, (err, data) => {
+    if (!err) {
+      
+      if (data.email === req.body.email) {
+        res.status(405).send({
+          message: "This Email Is Verified Already !"
+        });
+      } 
+    }
+    else {
+      var newAdmissionPerson = AdmissionUserModel({
+        "stDname": req.body.stDname,
+        "email": req.body.email,
+        "contactno": req.body.contactno,
+        "adress": req.body.brithDate,
+        "nationality": req.body.nationality,
+        "birthDate": req.body.religion,
+        "placeofBIrth": req.body.nameOfFather,
+        "level": req.body.nameOfMother,
+      });
+      newAdmissionPerson.save((err, data) => {
         if (!err) {
-          if(data.email === req.body.email){ 
-            res.status(405).send({
-              message : "This Email Is Verified Already !"
-            });
-          }
-        }else{
-          var newAdmissionPerson = AdmissionUserModel({
-            "stDname" : req.body.stDname,
-            "email" : req.body.email,
-            "age" : req.body.age,
-            "brithDate" : req.body.brithDate,
-            "nationality" : req.body.nationality,
-            "religion" : req.body.religion,
-            "nameOfFather" : req.body.nameOfFather,
-            "nameOfMother" : req.body.nameOfMother,
-            "contactno" : req.body.contactno
+          console.log(data);
+          res.status(200).send({
+            message: "Welcome " + req.body.stDname,
+            data,
           });
-          newAdmissionPerson.save((err, data) => {
-            if (!err) {
-              console.log(data);
-              res.status(200).send({
-                message: "Welcome To Our Website " + req.body.stDname,
-                data,
-              });
-              console.log(data);
-            } else {
-              res.status(405).send({
-                message: "User creation Failed",
-              });
-            }
+          console.log(data);
+        } else {
+          res.status(405).send({
+            message: "User creation Failed",
           });
         }
-      })
-    });
+      });
+    }
+  })
+});
 
 app.listen(port, () => {
   console.log("server is running on", port);

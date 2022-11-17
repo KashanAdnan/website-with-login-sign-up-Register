@@ -1,3 +1,4 @@
+
 function login() {
     console.log("Hello");
     var obj = {
@@ -13,13 +14,69 @@ function login() {
         if (Http.readyState === 4) {
             let jsonRes = JSON.parse(Http.responseText);
             console.log(jsonRes)
-            if (jsonRes.status === 200) {
+            console.log(Http.status)
+            if (Http.status === 200) {
                 alert(jsonRes.message)
-            } else {
-                alert(jsonRes.message)
+                console.log(jsonRes.message)
+                location.replace("http://localhost:3000/home.html");
+            }else if(Http.status === 405){
+                alert(jsonRes.message);
+                console.log("nahee mil raha")
+                console.log(jsonRes.message)
+            } 
+            else {
+               
             }
         }
     }
 
     return false;
 }
+
+
+
+
+// var obj =[ {
+//     name :"ahmer ", 
+//     class: "nine ",
+
+// },
+// {
+//     name :"ahmer ", 
+//     class: "nine ",
+
+// },
+// {
+//     name :"ahmer ", 
+//     class: "nine ",
+
+// },
+// {
+//     name :"ahmer ", 
+//     class: "nine ",
+
+// },
+// {
+//     name :"ahmer ", 
+//     class: "nine ",
+
+// },
+// {
+//     name :"ahmer ", 
+//     class: "nine ",
+
+// },
+// {
+//     name :"ahmer ", 
+//     class: "nine ",
+
+// },
+// ]
+// var i =1;
+// var newValue =obj.map((element)=>{
+// // console.log(element);
+// console.log(i++)
+// console.log(element.name)
+// console.log(element.class   )
+// })
+// console.log(newValue);
