@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 mongoose.connect(
-  "mongodb+srv://kashan:kashan654321@cluster0.c6v8zv7.mongodb.net/?retryWrites=true&w=majority",
+  process.env.DB,
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
