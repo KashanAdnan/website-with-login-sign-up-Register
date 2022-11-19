@@ -20,46 +20,40 @@ const sinup = () => {
     Http.onreadystatechange = (e) => {
         console.log(e)
         // console.log(e)
+        let jsonRes = JSON.parse(Http.responseText);
         if (Http.readyState === 4) {
-            let jsonRes = JSON.parse(Http.responseText);
             if (Http.status === 200) {
-                alert(jsonRes.message)
-                // window.location.reload()
-                // location.replace("http://localhost:3000/in.html");
-                // var loginemail = document.getElementById("email");
-                // var loginuser = document.getElementById("username");
-                // var loginphone = document.getElementById("phone");
-                // var loginpasss = document.getElementById("password");
-                // var loginconpass = document.getElementById("confirm-password");
+                swal("Good job!", jsonRes.message, "success");
+                window.location.reload()
+                location.replace("http://localhost:3000/");
+                var loginemail = document.getElementById("email");
+                var loginuser = document.getElementById("username");
+                var loginphone = document.getElementById("phone");
+                var loginpasss = document.getElementById("password");
+                var loginconpass = document.getElementById("confirm-password");
 
-                // if (loginuser.value === ' ') {
-                //     alert("***Please Fill User   Input !")
-                // }
-                // else if (loginemail.value === ' ') {
-                //     alert("***Please Fill Email Input !")
-                // }
-                // else if (loginpasss.value === ' ') {
-                //     alert("***Please Fill Password Input !")
-                // }
-                // else if (loginconpass.value === ' ') {
-                //     alert("***Please Fill Password Input !")
-                // }
-                // else if (loginpasss.value < 8 && loginconpass.value < 8) {
-                //     alert("***The Password Must Be 8 Character !")
-                // }
-
-                // else if (loginphone.value === ' ') {
-                //     alert("***Please Fill Phone Input !")
-                // }
-                // else if (loginconpass.value !== loginpasss.value) {
-                //     alert("***Please Match the Password & Confirm Password  Input !")
-                // }
-
-
-                // localStorage.setItem('name', loginuser.value)
+                if (loginuser.value === ' ') {
+                    swal("Opps!", "***Please Fill User Input !", "error");
+                }
+                else if (loginemail.value === ' ') {
+                    swal("Opps!", "***Please Fill Email Input !", "error");
+                }
+                else if (loginpasss.value === ' ') {
+                    swal("Opps!", "***Please Fill Password Input !", "error");
+                }
+                else if (loginpasss.value < 8 && loginconpass.value < 8) {
+                    swal("Opps!", "***The Password Must Be 8 Character !", "error");
+                }
+                
+                else if (loginphone.value === ' ') {
+                    swal("Opps!", "***Please Fill Pho Input !", "error");
+                }
+                else if (loginconpass.value !== loginpasss.value) {
+                    swal("Opps!", "***Please Match the Password & Confirm Passwor Input !", "error");
+                }
             }
             else {
-                alert(jsonRes.message)
+                swal("Opps!", jsonRes.message, "error");
                 // window.location.reload()
             }
         }

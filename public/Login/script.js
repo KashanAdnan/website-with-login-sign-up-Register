@@ -19,12 +19,11 @@ function login() {
             console.log(jsonRes)
             console.log(Http.status)
             if (Http.status === 200) {
-                alert(jsonRes.message)
+                // alert(jsonRes.message)
+                swal("Opps!", jsonRes.message, "error");
                 console.log(jsonRes.message)
-                location.replace("http://localhost:3000/home.html");
             }else if(Http.status === 405){
-                alert(jsonRes.message);
-                console.log("nahee mil raha")
+                swal("Good job!", jsonRes.message, "success");
                 console.log(jsonRes.message)
             } 
             else {

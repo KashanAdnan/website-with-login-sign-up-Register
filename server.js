@@ -8,7 +8,7 @@ var bodyParser = require("body-parser");
 const { SignUpUserModel } = require("./signupdatabase")
 const { AdmissionUserModel } = require("./admissiondatbase")
 const path = require("path");
-const port = process.env.PORT ;
+const port = 3000 || process.env.PORT;
 
 app.use(cors({ origin: "*", credentials: true }));
 app.use(bodyParser.json());
@@ -68,35 +68,30 @@ app.post("/login", (req, res, next) => {
 
 
 app.post("/admission", (req, res, next) => {
-
-  AdmissionUserModel.findOne({ email: req.body.email }, (err, data) => {
-    if (!err) {
-      
-      if (data.email === req.body.email) {
+  AdmissionUserModel.find({ email: req.body.email }, (err, data) => {
+    if (data.email === req.body.email) {
         res.status(405).send({
-          message: "This Email Is Verified Already !"
+          message: "User Already Exits Please Change Your Email ID Or Login !"
         });
-      } 
-    }
-    else {
+    } else {
       var newAdmissionPerson = AdmissionUserModel({
         "stDname": req.body.stDname,
+        "age": req.body.age,
         "email": req.body.email,
         "contactno": req.body.contactno,
         "adress": req.body.brithDate,
         "nationality": req.body.nationality,
         "birthDate": req.body.religion,
-        "placeofBIrth": req.body.nameOfFather,
-        "level": req.body.nameOfMother,
+        "placeofBIrth": req.body.placeofBIrth,
+        "level": req.body.level,
       });
       newAdmissionPerson.save((err, data) => {
+        // console.log(data);
         if (!err) {
-          console.log(data);
           res.status(200).send({
-            message: "Welcome " + req.body.stDname,
-            data,
+            message: "Your Form Has Been Submitted to Sir Tarique Ahmed !",
+            data
           });
-          console.log(data);
         } else {
           res.status(405).send({
             message: "User creation Failed",
@@ -105,6 +100,7 @@ app.post("/admission", (req, res, next) => {
       });
     }
   })
+
 });
 
 app.listen(port, () => {
