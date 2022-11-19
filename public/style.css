@@ -363,7 +363,7 @@
 }
 .buttons button:hover{
     background-color: #6868ff;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, .4);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .4);
     color: #fff;
     transition: .3s;
 }
