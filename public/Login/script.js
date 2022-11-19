@@ -20,10 +20,13 @@ function login() {
             console.log(Http.status)
             if (Http.status === 200) {
                 // alert(jsonRes.message)
-                swal("Opps!", jsonRes.message, "error");
+                swal("Good job!", jsonRes.message, "success");
+                setInterval(function () {
+                    window.location.href="./../index.html"
+                }, 4000)
                 console.log(jsonRes.message)
             }else if(Http.status === 405){
-                swal("Good job!", jsonRes.message, "success");
+                swal("Opps!", jsonRes.message, "error");
                 console.log(jsonRes.message)
             } 
             else {

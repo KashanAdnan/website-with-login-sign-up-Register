@@ -9,41 +9,53 @@ const { SignUpUserModel } = require("./signupdatabase")
 const { AdmissionUserModel } = require("./admissiondatbase")
 const path = require("path");
 const port = 3000 || process.env.PORT;
+const bycrypt = require("bcryptjs");
+
 const monogoClient = require("mongodb").MongoClient;
 
 app.use(cors({ origin: "*", credentials: true }));
 app.use(bodyParser.json());
 app.use("/", express.static(path.resolve(path.join(__dirname, "public"))));
 
+
+
 app.post("/signup", (req, res, next) => {
   SignUpUserModel.findOne({ email: req.body.email }, (err, data) => {
     if (err || data) {
-      res.status(405).send({
-        message: "Please Make Another Account User Already Exists !",
-      });
-    } else {
+      if (data.email === req.body.email) {
+        res.status(405).send({
+          message: "Please Make Another Account User Already Exists !",
+        });
+        return;
+      }
 
-      var newSignUpPerson = SignUpUserModel({
-        "username": req.body.username,
-        "email": req.body.email,
-        "phone": req.body.phone,
-        "password": req.body.password,
-        "confPassword": req.body.confPassword,
-      });
-      newSignUpPerson.save((err, data) => {
-        if (!err) {
-          console.log(data);
-          res.status(200).send({
-            message: "Sign Up SuccesFull !",
-            data,
+    } else {
+      const saltRounds = 12;
+      bycrypt.genSalt(saltRounds, function (err, salt) {
+        bycrypt.hash(req.body.password, salt, function (err, hash) {
+          var newSignUpPerson = SignUpUserModel({
+            "username": req.body.username,
+            "email": req.body.email,
+            "phone": req.body.phone,
+            "password": hash,
+            "confPassword": hash,
           });
-          console.log(data);
-        } else {
-          res.status(405).send({
-            message: "User creation Failed",
+          newSignUpPerson.save((err, data) => {
+            if (!err) {
+              console.log(data);
+              res.status(200).send({
+                message: "Sign Up SuccesFull !",
+                data,
+              });
+              console.log(data);
+            } else {
+              res.status(405).send({
+                message: "User creation Failed",
+              });
+            }
           });
-        }
-      });
+        });
+      })
     }
   });
 });
@@ -51,18 +63,24 @@ app.post("/signup", (req, res, next) => {
 
 app.post("/login", (req, res, next) => {
   SignUpUserModel.findOne({ email: req.body.email }, (err, data) => {
-    if (data.email === req.body.email && data.password === req.body.password) {
+    console.log(data.email)
+    bycrypt.compare(req.body.password, data.password, (err, isFound) => {
+      console.log(data.password);
+      console.log(req.body.password);
+      console.log(isFound);
+      if (isFound) {
 
-      res.status(200).send({
-        message: "Successfully login  !"
-      });
+        res.status(200).send({
+          message: "Successfully login  !"
+        });
 
-    }
-    else {
-      res.status(405).send({
-        message: "User Not Exits !"
-      });
-    }
+      }
+      else {
+        res.status(405).send({
+          message: "User Not Exits Please Sign Up !"
+        });
+      }
+    })
   })
 });
 
@@ -71,9 +89,9 @@ app.post("/login", (req, res, next) => {
 app.post("/admission", (req, res, next) => {
   AdmissionUserModel.findOne({ email: req.body.email }, (err, data) => {
     if (data.email === req.body.email) {
-        res.status(405).send({
-          message: "User Already Exits Please Change Your Email ID Or Login !"
-        });
+      res.status(405).send({
+        message: "User Already Exits Please Change Your Email ID Or Login !"
+      });
     } else {
       var newAdmissionPerson = AdmissionUserModel({
         "stDname": req.body.stDname,
@@ -104,22 +122,23 @@ app.post("/admission", (req, res, next) => {
 });
 
 
-app.get("/myuser", (req, res) => {
+
+app.get("/admin", (req, res) => {
   monogoClient.connect("mongodb+srv://kashan:kashan654321@cluster0.c6v8zv7.mongodb.net/?retryWrites=true&w=majority"
-      , { useNewUrlParser: true, useUnifiedTopology: true }, (err, data) => {
-          if (err) {
-              console.log(err)
-          }
-          var database = data.db("test")
-          console.log("Connection Succesfull !");
-          database.collection('school admission data bases').find({}).toArray((error, db) => {
-              if (error) {
-                  throw error
-              }
-              res.send(db);
-          })
+    , { useNewUrlParser: true, useUnifiedTopology: true }, (err, data) => {
+      if (err) {
+        console.log(err)
+      }
+      var database = data.db("test")
+      console.log("Connection Succesfull !");
+      database.collection('school admission data bases').find({}).toArray((error, db) => {
+        if (error) {
+          throw error
+        }
+        res.send(db);
       })
-});
+    })
+})
 
 
 app.listen(port, () => {
