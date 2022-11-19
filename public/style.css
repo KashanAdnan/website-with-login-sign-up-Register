@@ -80,6 +80,13 @@
     margin-top: 15px;
     margin-left: -30px;
 }
+.buttons a:hover{
+    background-color: #6868ff;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.466);
+    color: #fff;
+    transform: scale(90%);
+    transition: .3s;
+}
 
 .nav-links ul li {
     margin-right: 20px;
@@ -91,7 +98,11 @@
     color: #EFF5F5;
 }
 
-.buttons button {
+.buttons{
+    margin-top: 14px;
+}
+.buttons  a {
+    color: #EFF5F5;
     padding: 10px 30px;
     border: 0;
     border: 1px solid #EFF5F5;
@@ -99,11 +110,8 @@
     font-size: 15px;
     background-color: transparent;
     border-radius: 3px;
-}
-
-.buttons button a {
-    color: #EFF5F5;
     text-decoration: none;
+    margin-top: 20px ;
 }
 
 .container {
@@ -360,12 +368,6 @@
     /* border-radius: 30px; */
     margin-bottom: 30px;
     margin-top: -190px;
-}
-.buttons button:hover{
-    background-color: #6868ff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .4);
-    color: #fff;
-    transition: .3s;
 }
 .classdesc .img-of-desc img {
     width: 500px;

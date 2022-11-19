@@ -8,7 +8,8 @@ var bodyParser = require("body-parser");
 const { SignUpUserModel } = require("./signupdatabase")
 const { AdmissionUserModel } = require("./admissiondatbase")
 const path = require("path");
-const port =process.env.PORT;
+const port = 3000 || process.env.PORT;
+const monogoClient = require("mongodb").MongoClient;
 
 app.use(cors({ origin: "*", credentials: true }));
 app.use(bodyParser.json());
@@ -68,7 +69,7 @@ app.post("/login", (req, res, next) => {
 
 
 app.post("/admission", (req, res, next) => {
-  AdmissionUserModel.find({ email: req.body.email }, (err, data) => {
+  AdmissionUserModel.findOne({ email: req.body.email }, (err, data) => {
     if (data.email === req.body.email) {
         res.status(405).send({
           message: "User Already Exits Please Change Your Email ID Or Login !"
@@ -100,10 +101,27 @@ app.post("/admission", (req, res, next) => {
       });
     }
   })
-
 });
+
+
+app.get("/myuser", (req, res) => {
+  monogoClient.connect("mongodb+srv://kashan:kashan654321@cluster0.c6v8zv7.mongodb.net/?retryWrites=true&w=majority"
+      , { useNewUrlParser: true, useUnifiedTopology: true }, (err, data) => {
+          if (err) {
+              console.log(err)
+          }
+          var database = data.db("test")
+          console.log("Connection Succesfull !");
+          database.collection('school admission data bases').find({}).toArray((error, db) => {
+              if (error) {
+                  throw error
+              }
+              res.send(db);
+          })
+      })
+});
+
 
 app.listen(port, () => {
   console.log("server is running on", port);
 });
-
