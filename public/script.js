@@ -4,11 +4,6 @@
 
 var port = "http://localhost:3000" || "https://sir-web.herokuapp.com"
 const sinup = () => {
-
-    var loginuser = document.getElementById("username");
-    localStorage.setItem('username' , loginuser)
-
-
     var obj = {
         email: document.getElementById("email").value,
         username: document.getElementById("username").value,

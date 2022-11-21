@@ -4,9 +4,8 @@
 
 const url = "http://localhost:3000" || "https://sir-web.herokuapp.com"
 function getData() {
-    var display = document.getElementById("alldata");
-
-
+    
+    var showdata = document.getElementById("showdata");
     const Http = new XMLHttpRequest();
     Http.open("GET", url + "/admin");
     Http.setRequestHeader("Content-Type", "application/json");
@@ -18,7 +17,7 @@ function getData() {
                 let jsonRes = JSON.parse(Http.responseText);
                 jsonRes.map(data =>{
                     console.log(data);
-                    display.innerHTML += `<tr>${data.stDname}  </tr> <br />` 
+                    
                 })
             }
         }

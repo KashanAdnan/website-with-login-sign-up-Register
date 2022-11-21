@@ -16,9 +16,6 @@ const monogoClient = require("mongodb").MongoClient;
 app.use(cors({ origin: "*", credentials: true }));
 app.use(bodyParser.json());
 app.use("/", express.static(path.resolve(path.join(__dirname, "public"))));
-
-
-
 app.post("/signup", (req, res, next) => {
   SignUpUserModel.findOne({ email: req.body.email }, (err, data) => {
     if (err || data) {
@@ -63,11 +60,11 @@ app.post("/signup", (req, res, next) => {
 
 app.post("/login", (req, res, next) => {
   SignUpUserModel.findOne({ email: req.body.email }, (err, data) => {
-    console.log(data.email)
+    // console.log(data.email)
     bycrypt.compare(req.body.password, data.password, (err, isFound) => {
-      console.log(data.password);
-      console.log(req.body.password);
-      console.log(isFound);
+      // console.log(data.password);
+      // console.log(req.body.password);
+      // console.log(isFound);
       if (isFound) {
 
         res.status(200).send({
@@ -139,8 +136,15 @@ app.get("/admin", (req, res) => {
       })
     })
 })
-
+app.get("/home", (req,res) =>{
+  SignUpUserModel.findOne({email : req.body.email} , (err,data) => {
+    // console.log()
+    // res.send(data.email)
+    // res.send(data.username)
+    res.send(data);
+  })
+})
 
 app.listen(port, () => {
-  console.log("server is running on", port);
+  console.log("Server is Running On PORT Number :", port);
 });

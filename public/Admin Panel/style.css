@@ -194,6 +194,8 @@ table{
     grid-template-columns: 100% auto;
     margin-top: 3.5rem;
     grid-gap: 2rem;
+    display: flex;
+    flex-wrap: wrap;
 }
 .card{
     background-color: #fff;
@@ -224,11 +226,15 @@ thead tr{
 }
 thead td{
     font-weight: 500;
-    font-size: 16px;
+    font-size: 16.6px;
     margin-top: -40px;
     /* width: 100%; */
 }
 td{
     padding: 1rem;
     font-size: .9rem;
+}
+.flex-wrap{
+    display: flex;
+    flex-direction: column;
 }

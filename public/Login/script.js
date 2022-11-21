@@ -22,7 +22,7 @@ function login() {
                 // alert(jsonRes.message)
                 swal("Good job!", jsonRes.message, "success");
                 setInterval(function () {
-                    window.location.href="./../index.html"
+                    window.location.href="../Home/home.html"
                 }, 4000)
                 console.log(jsonRes.message)
             }else if(Http.status === 405){
