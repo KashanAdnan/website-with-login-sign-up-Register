@@ -1,4 +1,4 @@
-var port = "http://localhost:3000"
+var port = "http://localhost:3000" || "https://sir-web.herokuapp.com"
 const find = () => {
     const Http = new XMLHttpRequest();
     Http.open("GET", port + "/home");
