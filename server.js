@@ -41,7 +41,7 @@ app.post("/signup", (req, res, next) => {
           });
           return;
         }
-      } else {
+      }       else {
         const saltRounds = 12;
         bycrypt.genSalt(saltRounds, function (err, salt) {
           bycrypt.hash(req.body.password, salt, function (err, hash) {
