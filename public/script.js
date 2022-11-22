@@ -26,8 +26,8 @@ const sinup = () => {
                 var loginphone = document.getElementById("phone");
                 var loginpasss = document.getElementById("password");
                 var loginconpass = document.getElementById("confirm-password");
-                // localStorage.setItem('username' , loginuser);
-                // localStorage.setItem('email' , loginemail);
+                localStorage.setItem('username' , loginuser.value);
+                localStorage.setItem('email' , loginemail.value);
 
                 if (loginuser.value === null) {
                     swal("Opps!", "***Please Fill User Input !", "error");
