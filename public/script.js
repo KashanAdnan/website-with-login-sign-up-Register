@@ -26,21 +26,23 @@ const sinup = () => {
                 var loginphone = document.getElementById("phone");
                 var loginpasss = document.getElementById("password");
                 var loginconpass = document.getElementById("confirm-password");
+                localStorage.setItem('username' , loginuser);
+                localStorage.setItem('email' , loginemail);
 
-                if (loginuser.value === ' ') {
+                if (loginuser.value === null) {
                     swal("Opps!", "***Please Fill User Input !", "error");
                 }
-                else if (loginemail.value === ' ') {
+                else if (loginemail.value === null) {
                     swal("Opps!", "***Please Fill Email Input !", "error");
                 }
-                else if (loginpasss.value === ' ') {
+                else if (loginpasss.value === null) {
                     swal("Opps!", "***Please Fill Password Input !", "error");
                 }
                 else if (loginpasss.value < 8 && loginconpass.value < 8) {
                     swal("Opps!", "***The Password Must Be 8 Character !", "error");
                 }
 
-                else if (loginphone.value === ' ') {
+                else if (loginphone.value === null) {
                     swal("Opps!", "***Please Fill Pho Input !", "error");
                 }
                 else if (loginconpass.value !== loginpasss.value) {
