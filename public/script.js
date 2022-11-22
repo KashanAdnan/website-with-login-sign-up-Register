@@ -18,7 +18,7 @@ const sinup = () => {
     Http.send(JSON.stringify(obj));
     Http.onreadystatechange = (e) => {
         console.log(e)
-        let jsonRes = JSON.parse(Http.responseText);
+        var jsonRes = JSON.parse(Http.responseText);
         if (Http.readyState === 4) {
             if (Http.status === 200) {
                 var loginemail = document.getElementById("email");
