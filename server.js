@@ -163,6 +163,31 @@ app.get("/admin", (req, res) => {
     }
   );
 });
+app.get("/signupdata", (req, res) => {
+  monogoClient.connect(
+    "mongodb+srv://kashan:kashan654321@cluster0.c6v8zv7.mongodb.net/?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    },
+    (err, data) => {
+      if (err) {
+        console.log(err);
+      }
+      var database = data.db("test");
+      console.log("Connection Succesfull !");
+      database
+        .collection("school admission data bases")
+        .find({})
+        .toArray((error, db) => {
+          if (error) {
+            throw error;
+          }
+          res.send(db);
+        });
+    }
+  );
+});
 app.get("/home", (req, res) => {
 });
 
