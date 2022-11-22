@@ -15,9 +15,22 @@ function getData() {
         if (Http.readyState === 4) {
             if (Http.status === 200) {
                 let jsonRes = JSON.parse(Http.responseText);
+                let out;
                 jsonRes.map(data =>{
-                    console.log(data);
                     
+                         out  = `
+                            <tr>
+                            <td>${data.stDname}</td>
+                            <td>${data.email}</td>
+                            <td>${data.age}</td>
+                            <td>${data.contactno}</td>
+                            <td>${data.nationality}</td>
+                            <td>${data.placeofBIrth}</td>
+                            <td>${data.level}</td>
+                            </tr>
+                        `
+                        showdata.innerHTML += out;
+                
                 })
             }
         }
