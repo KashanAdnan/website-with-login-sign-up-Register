@@ -2,7 +2,7 @@
 // const Swal  = require("sweetalert2");
 // const app = express();
 
-var port = "http://localhost:3000" || "https://sir-web.herokuapp.com"
+var port = "https://sir-web.herokuapp.com"
 const sinup = () => {
     var obj = {
         email: document.getElementById("email").value,
