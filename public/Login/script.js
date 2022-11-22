@@ -1,5 +1,5 @@
 
-var port = "http://localhost:3000" || "https://sir-web.herokuapp.com"
+var port = "https://sir-web.herokuapp.com"
 
 
 function login() {
