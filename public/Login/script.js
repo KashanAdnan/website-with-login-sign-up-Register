@@ -19,6 +19,13 @@ function login() {
             console.log(jsonRes)
             console.log(Http.status)
             if (Http.status === 200) {
+               var email =  document.getElementById("email");
+                var password =  document.getElementById("password");
+                if (email.value === "admin@gmail.com" && password.value === "openadminpage") {
+                    setInterval(function () {
+                        window.location.href = "../Admin Panel/index.html"
+                    }, 3000)
+                }
                 // alert(jsonRes.message)
                 swal("Good job!", jsonRes.message, "success");
                 setInterval(function () {
