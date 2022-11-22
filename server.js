@@ -15,8 +15,8 @@ const monogoClient = require("mongodb").MongoClient;
 
 
 var adminObj = {
-  email:"",
-
+  email:"admin@gmail.com",
+  password : "admin1278"
 }
 
 app.use(
@@ -79,6 +79,11 @@ app.post("/login", (req, res, next) => {
       email: req.body.email,
     },
     (err, data) => {
+      if (data === adminObj) {
+        res.status(200).send({
+          message : "Going To Admin Page Please Wait ............."
+        })
+      }
       // console.log(data.email)
       bycrypt.compare(req.body.password, data.password, (err, isFound) => {
         // console.log(data.password);
@@ -188,9 +193,7 @@ app.get("/signupdata", (req, res) => {
     }
   );
 });
-app.get("/home", (req, res) => {
-});
 
 app.listen(port, () => {
-  console.log("Server is Running On PORT Number :", port);
+  console.log("Server is Running On PORT Number : ", port);
 });
