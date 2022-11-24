@@ -92,6 +92,7 @@ app.post("/login", (req, res, next) => {
           res.status(200).send({
             message: "Going To Admin Page Please Wait .............",
           });
+          window.location.href = "./public/Admin Panel/index.html"
         } 
         else {
           res.status(405).send({
