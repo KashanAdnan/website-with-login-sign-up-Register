@@ -126,7 +126,7 @@ app.post("/admission", (req, res, next) => {
         newAdmissionPerson.save((err, data) => {
           if (!err) {
             res.status(200).send({
-              message: "Your Form Has Been Submitted to Sir Tarique Ahmed !",
+              message: "Your Form Has Been Submitted ` !",
               data,
             });
           } else {
