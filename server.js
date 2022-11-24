@@ -8,16 +8,15 @@ var bodyParser = require("body-parser");
 const { SignUpUserModel } = require("./signupdatabase");
 const { AdmissionUserModel } = require("./admissiondatbase");
 const path = require("path");
-const port =  process.env.PORT;
+const port = process.env.PORT;
 const bycrypt = require("bcryptjs");
 
 const monogoClient = require("mongodb").MongoClient;
 
-
 var adminObj = {
-  email:"admin@gmail.com",
-  password : "admin1278"
-}
+  email: "admin@gmail.com",
+  password: "admin1278",
+};
 
 app.use(
   cors({
@@ -41,7 +40,7 @@ app.post("/signup", (req, res, next) => {
           });
           return;
         }
-      }       else {
+      } else {
         const saltRounds = 12;
         bycrypt.genSalt(saltRounds, function (err, salt) {
           bycrypt.hash(req.body.password, salt, function (err, hash) {
@@ -88,12 +87,12 @@ app.post("/login", (req, res, next) => {
           res.status(200).send({
             message: "Successfully login  !",
           });
-        }if (data === adminObj) {
+        }
+        if (data === adminObj) {
           res.status(200).send({
-            message : "Going To Admin Page Please Wait ............."
-          })
-        } 
-        else {
+            message: "Going To Admin Page Please Wait .............",
+          });
+        } else {
           res.status(405).send({
             message: "User Not Exits Please Sign Up !",
           });
@@ -119,14 +118,12 @@ app.post("/admission", (req, res, next) => {
           age: req.body.age,
           email: req.body.email,
           contactno: req.body.contactno,
-          adress: req.body.brithDate,
+          adress: req.body.adress,
           nationality: req.body.nationality,
-          birthDate: req.body.religion,
           placeofBIrth: req.body.placeofBIrth,
           level: req.body.level,
         });
         newAdmissionPerson.save((err, data) => {
-          // console.log(data);
           if (!err) {
             res.status(200).send({
               message: "Your Form Has Been Submitted to Sir Tarique Ahmed !",

@@ -20,12 +20,8 @@ function admit() {
             let jsonRes = JSON.parse(Http.responseText);
             if (Http.status === 200) {
                 swal("Good job!", jsonRes.message, "success");
-                // location.reload();
-            } 
-            else {
-                // alert(jsonRes.message);
+            } else {
                 swal("Opps!", jsonRes.message, "error");
-                console.log(jsonRes.message)
             }
         }
     }
