@@ -79,11 +79,6 @@ app.post("/login", (req, res, next) => {
       email: req.body.email,
     },
     (err, data) => {
-      if (data === adminObj) {
-        res.status(200).send({
-          message : "Going To Admin Page Please Wait ............."
-        })
-      }
       // console.log(data.email)
       bycrypt.compare(req.body.password, data.password, (err, isFound) => {
         // console.log(data.password);
@@ -93,7 +88,12 @@ app.post("/login", (req, res, next) => {
           res.status(200).send({
             message: "Successfully login  !",
           });
-        } else {
+        }if (data === adminObj) {
+          res.status(200).send({
+            message : "Going To Admin Page Please Wait ............."
+          })
+        } 
+        else {
           res.status(405).send({
             message: "User Not Exits Please Sign Up !",
           });
@@ -142,7 +142,6 @@ app.post("/admission", (req, res, next) => {
     }
   );
 });
-
 app.get("/admin", (req, res) => {
   monogoClient.connect(
     "mongodb+srv://kashan:kashan654321@cluster0.c6v8zv7.mongodb.net/?retryWrites=true&w=majority",

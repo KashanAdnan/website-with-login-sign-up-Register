@@ -9,7 +9,7 @@ function login() {
         password: document.getElementById("password").value
     }
     var Http = new XMLHttpRequest();
-    Http.open("POST", port+ "/login");
+    Http.open("POST", port+ "/login");  
     Http.setRequestHeader("Content-Type", "application/json");
     Http.send(JSON.stringify(obj));
     Http.onreadystatechange = (e) => {
