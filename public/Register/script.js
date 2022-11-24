@@ -10,7 +10,7 @@ function admit() {
         level : document.getElementById("level").value
     }
     var Http = new XMLHttpRequest;
-    Http.open("POST",  "http://localhost:3000" + "/admission");
+    Http.open("POST",   "https://sir-web.herokuapp.com" + "/admission");
     Http.setRequestHeader("Content-Type", "application/json");
     Http.send(JSON.stringify(addobj));
     Http.onreadystatechange = (e) => {
