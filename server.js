@@ -88,8 +88,8 @@ app.post("/login", (req, res, next) => {
             message: "Successfully login  !",
           });
         } else if (
-          data.email === adminObj.email &&
-          data.password === adminObj.password
+          req.body.email === adminObj.email &&
+          req.body.password === adminObj.password
         ) {
           res.status(205).send({
             message: "Going To Admin Page Please Wait .............",
