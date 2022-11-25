@@ -1,12 +1,12 @@
 function admit() {
     var obj = {
         stDname : document.getElementById("username").value,
-        email : document.getElementById("email").value,
         age : document.getElementById("age").value,
+        email : document.getElementById("email").value,
         contactno : document.getElementById("phone").value,
-        nationality : document.getElementById("nation").value,
-        placeofbirth : document.getElementById("placeofbirth").value,
         adress : document.getElementById("adress`").value,
+        nationality : document.getElementById("nation").value,
+        placeofBIrth : document.getElementById("placeofbirth").value,
         level : document.getElementById("level").value
     }
     var Http = new XMLHttpRequest();

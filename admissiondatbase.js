@@ -20,7 +20,6 @@ var admissionSchema = new mongoose.Schema({
     contactno : String,
     adress : String,
     nationality : String,
-    birthDate : String,
     placeofBIrth : String,
     level : String
 });
