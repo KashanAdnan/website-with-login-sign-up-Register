@@ -106,16 +106,16 @@ app.post("/login", (req, res, next) => {
 });
 
 app.post("/admission", (req, res, next) => {
-  AdmissionUserModel.findOne(
-    {
-      email: req.body.email,
-    },
-    (err, data) => {
-      if (data.email === req.body.email) {
-        res.status(405).send({
-          message: "User Already Exits Please Change Your Email ID !",
-        });
-      } else {
+  // AdmissionUserModel.findOne(
+  //   {
+  //     email: req.body.email,
+  //   },
+  //   (err, data) => {
+  //     if (data.email === req.body.email) {
+  //       res.status(405).send({
+  //         message: "User Already Exits Please Change Your Email ID !",
+  //       });
+  //     } else {
         var newAdmissionPerson = AdmissionUserModel({
           stDname: req.body.stDname,
           age: req.body.age,
@@ -138,9 +138,9 @@ app.post("/admission", (req, res, next) => {
             });
           }
         });
-      }
-    }
-  );
+  //     }
+  //   }
+  // );
 });
 
 app.get("/admin", (req, res) => {
