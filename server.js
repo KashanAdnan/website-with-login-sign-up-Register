@@ -87,14 +87,15 @@ app.post("/login", (req, res, next) => {
           res.status(200).send({
             message: "Successfully login  !",
           });
-        }
-       else if (data.email === adminObj.email && data.password === adminObj.password) {
+        } else if (
+          data.email === adminObj.email &&
+          data.password === adminObj.password
+        ) {
           res.status(200).send({
             message: "Going To Admin Page Please Wait .............",
           });
-          window.location.href = "./public/Admin Panel/index.html"
-        } 
-        else {
+          window.location.href = "./public/Admin Panel/index.html";
+        } else {
           res.status(405).send({
             message: "User Not Exits Please Sign Up !",
           });
@@ -112,7 +113,7 @@ app.post("/admission", (req, res, next) => {
     (err, data) => {
       if (data.email === req.body.email) {
         res.status(405).send({
-          message: "User Already Exits Please Change Your Email ID Or Login !",
+          message: "User Already Exits Please Change Your Email ID !",
         });
       } else {
         var newAdmissionPerson = AdmissionUserModel({
@@ -128,7 +129,7 @@ app.post("/admission", (req, res, next) => {
         newAdmissionPerson.save((err, data) => {
           if (!err) {
             res.status(200).send({
-              message: "Your Form Has Been Submitted ` !",
+              message: "Your Form Has Been Submitted  !",
               data,
             });
           } else {
@@ -141,6 +142,7 @@ app.post("/admission", (req, res, next) => {
     }
   );
 });
+
 app.get("/admin", (req, res) => {
   monogoClient.connect(
     "mongodb+srv://kashan:kashan654321@cluster0.c6v8zv7.mongodb.net/?retryWrites=true&w=majority",

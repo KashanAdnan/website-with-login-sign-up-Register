@@ -1,4 +1,6 @@
+var port =  "https://sir-web.herokuapp.com" ;
 function admit() {
+    console.log("hello");
     var obj = {
         stDname : document.getElementById("username").value,
         age : document.getElementById("age").value,
@@ -10,19 +12,21 @@ function admit() {
         level : document.getElementById("level").value
     }
     var Http = new XMLHttpRequest();
-    var port =  "https://sir-web.herokuapp.com" ;
-    Http.open("POST", "https://sir-web.herokuapp.com" +"/admission");
+    Http.open("POST",  port +"/admission");
     Http.setRequestHeader("Content-Type", "application/json");
     Http.send(JSON.stringify(obj));
+    console.log(obj)
     Http.onreadystatechange = (e) => {
         console.log(e)
         if (Http.readyState === 4) {
             console.log(Http.status)
             var jsonRes = JSON.parse(Http.responseText);
             if (Http.status === 200) {
-                swal("Good job!", jsonRes.message, "success");
+                console.log("hellooooooooooooo Jeettttt")
+                // swal("Good job!", jsonRes.message, "success");
             } else {
-                swal("Opps!", jsonRes.message, "error");
+                console.log("hellooooooooooooo NO OOOOOOO Jeettttt")
+                // swal("Opps!", jsonRes.message, "error");
             }
         }
     }
