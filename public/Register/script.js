@@ -24,8 +24,10 @@ function admit() {
             if (Http.status === 200) {
                 // console.log("hellooooooooooooo Jeettttt")
                 swal("Good job!", jsonRes.message, "success");
+                setInterval(function () {
+                    window.location.href = "../Home/home.html"
+                },4000)
             } else {
-                // console.log("hellooooooooooooo NO OOOOOOO Jeettttt")
                 swal("Opps!", jsonRes.message, "error");
             }
         }
