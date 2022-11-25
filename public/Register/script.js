@@ -22,11 +22,11 @@ function admit() {
             console.log(Http.status)
             var jsonRes = JSON.parse(Http.responseText);
             if (Http.status === 200) {
-                console.log("hellooooooooooooo Jeettttt")
-                // swal("Good job!", jsonRes.message, "success");
+                // console.log("hellooooooooooooo Jeettttt")
+                swal("Good job!", jsonRes.message, "success");
             } else {
-                console.log("hellooooooooooooo NO OOOOOOO Jeettttt")
-                // swal("Opps!", jsonRes.message, "error");
+                // console.log("hellooooooooooooo NO OOOOOOO Jeettttt")
+                swal("Opps!", jsonRes.message, "error");
             }
         }
     }

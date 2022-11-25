@@ -119,7 +119,7 @@ app.post("/admission", (req, res, next) => {
         var newAdmissionPerson = AdmissionUserModel({
           stDname: req.body.stDname,
           age: req.body.age,
-          email: req.body.email,
+          email: req.body.email,  
           contactno: req.body.contactno,
           adress: req.body.adress,
           nationality: req.body.nationality,
