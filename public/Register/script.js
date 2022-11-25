@@ -6,6 +6,7 @@ function admit() {
         contactno : document.getElementById("phone").value,
         nationality : document.getElementById("nation").value,
         placeofbirth : document.getElementById("placeofbirth").value,
+        adress : document.getElementById("adress`").value,
         level : document.getElementById("level").value
     }
     var Http = new XMLHttpRequest();
