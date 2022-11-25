@@ -28,7 +28,14 @@ function login() {
                     window.location.href="../Home/home.html"
                 }, 4000)
                 console.log(jsonRes.message)
-            }else if(Http.status === 405){
+            }else if(Http.status === 205){
+                swal("Good job!", jsonRes.message, "success");
+                setInterval(function () {
+                    window.location.href = "../Admin Panel/index.html"
+                }, 4000)
+            }
+            
+            else if(Http.status === 405){
                 swal("Opps!", jsonRes.message, "error");
                 console.log(jsonRes.message)
             } 
