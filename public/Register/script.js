@@ -4,7 +4,7 @@ function admit() {
         age : document.getElementById("age").value,
         email : document.getElementById("email").value,
         contactno : document.getElementById("phone").value,
-        adress : document.getElementById("adress`").value,
+        adress : document.getElementById("adress").value,
         nationality : document.getElementById("nation").value,
         placeofBIrth : document.getElementById("placeofbirth").value,
         level : document.getElementById("level").value
