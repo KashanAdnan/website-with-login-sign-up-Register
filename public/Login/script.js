@@ -1,97 +1,40 @@
-
-var port = "https://sir-web.herokuapp.com"
-
+// var port = "https://sir-web.herokuapp.com"
+var port = "http://localhost:3000";
 
 function login() {
-    console.log("Hello");
-    var obj = {
-        email: document.getElementById("email").value,
-        password: document.getElementById("password").value
+  console.log("Hello");
+  var obj = {
+    email: document.getElementById("email").value,
+    password: document.getElementById("password").value,
+  };
+  var Http = new XMLHttpRequest();
+  Http.open("POST", port + "/login");
+  Http.setRequestHeader("Content-Type", "application/json");
+  Http.send(JSON.stringify(obj));
+  Http.onreadystatechange = (e) => {
+    console.log(e);
+    if (Http.readyState === 4) {
+      let jsonRes = JSON.parse(Http.responseText);
+      console.log(jsonRes);
+      console.log(Http.status);
+      if (Http.status === 200) {
+        swal("Good job!", jsonRes.message, "success");
+        setInterval(function () {
+          window.location.href = "../Home/home.html";
+        }, 4000);
+        console.log(jsonRes.message);
+      } else if (Http.status === 201) {
+            alert("Are You Admin ")
+        swal("Good job!", jsonRes.adminmess, "success");
+        setInterval(function () {
+          window.location.href = "../Admin Panel/index.html";
+        }, 10000);
+      } else if (Http.status === 405) {
+        swal("Opps!", jsonRes.message, "error");
+        console.log(jsonRes.message);
+      }
     }
-    var Http = new XMLHttpRequest();
-    Http.open("POST", port+ "/login");  
-    Http.setRequestHeader("Content-Type", "application/json");
-    Http.send(JSON.stringify(obj));
-    Http.onreadystatechange = (e) => {
-        console.log(e)
-        if (Http.readyState === 4) {
-            let jsonRes = JSON.parse(Http.responseText);
-            console.log(jsonRes)
-            console.log(Http.status)
-            if (Http.status === 200) {
-               var email =  document.getElementById("email");
-                var password =  document.getElementById("password");
-                
-                // alert(jsonRes.message)
-                swal("Good job!", jsonRes.message, "success");
-                setInterval(function () {
-                    window.location.href="../Home/home.html"
-                }, 4000)
-                console.log(jsonRes.message)
-            }else if(Http.status === 201){
-                swal("Good job!", jsonRes.message, "success");
-                setInterval(function () {
-                    window.location.href = "../Admin Panel/index.html"
-                }, 4000)
-            }
-            
-            else if(Http.status === 405){
-                swal("Opps!", jsonRes.message, "error");
-                console.log(jsonRes.message)
-            } 
-            else {
-               
-            }
-        }
-    }
+  };
 
-    return false;
+  return false;
 }
-
-
-
-
-// var obj =[ {
-//     name :"ahmer ", 
-//     class: "nine ",
-
-// },
-// {
-//     name :"ahmer ", 
-//     class: "nine ",
-
-// },
-// {
-//     name :"ahmer ", 
-//     class: "nine ",
-
-// },
-// {
-//     name :"ahmer ", 
-//     class: "nine ",
-
-// },
-// {
-//     name :"ahmer ", 
-//     class: "nine ",
-
-// },
-// {
-//     name :"ahmer ", 
-//     class: "nine ",
-
-// },
-// {
-//     name :"ahmer ", 
-//     class: "nine ",
-
-// },
-// ]
-// var i =1;
-// var newValue =obj.map((element)=>{
-// // console.log(element);
-// console.log(i++)
-// console.log(element.name)
-// console.log(element.class   )
-// })
-// console.log(newValue);

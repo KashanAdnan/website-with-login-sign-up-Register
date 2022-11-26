@@ -16,18 +16,19 @@ function getData() {
             if (Http.status === 200) {
                 let jsonRes = JSON.parse(Http.responseText);
                 let out;
+                var i = 1;
                 jsonRes.map(data =>{
-                    
-                         out  = `
-                            <tr>
-                            <td>${data.stDname}</td>
-                            <td>${data.email}</td>
-                            <td>${data.age}</td>
-                            <td>${data.contactno}</td>
-                            <td>${data.nationality}</td>
-                            <td>${data.placeofBIrth}</td>
-                            <td>${data.level}</td>
-                            </tr>
+                        out  = `
+                        <tr>
+                        <td>${i++}</td>
+                        <td>${data.stDname}</td>
+                        <td>${data.email}</td>
+                        <td>${data.age}</td>
+                        <td>${data.contactno}</td>
+                        <td>${data.nationality}</td>
+                        <td>${data.placeofBIrth}</td>
+                        <td>${data.level}</td>
+                        </tr>
                         `
                         showdata.innerHTML += out;
                 

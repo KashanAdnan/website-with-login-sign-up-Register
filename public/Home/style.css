@@ -20,18 +20,22 @@
   box-shadow: 0 0 40px rgba(0, 0, 0, 834);
   flex-wrap: nowrap;
 }
-.userdetail{
+
+.userdetail {
   margin-top: 20px;
 }
-.userdetail h3{
+
+.userdetail h3 {
   font-size: 20px;
   font-weight: 300;
 }
-.userdetail p{
+
+.userdetail p {
   font-size: 15px;
   color: rgb(203, 221, 255);
 }
-.icon i{
+
+.icon i {
   font-size: 30px;
   border: 1px solid #fff;
   border-radius: 50%;
@@ -39,7 +43,8 @@
   margin-right: -40px;
   position: relative;
 }
- .nav-links ul {
+
+.nav-links ul {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -607,7 +612,8 @@ footer .heading {
 
 .basiclevel {
   width: 400px;
-  border: 2px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  padding-bottom: 20px;
   cursor: pointer;
   margin-left: 30px;
   margin-bottom: 40px;
@@ -617,7 +623,8 @@ footer .heading {
   width: 400px;
   margin-left: 30px;
   margin-bottom: 40px;
-  border: 2px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  padding-bottom: 20px;
   cursor: pointer;
   transform: translateY(-5%);
 }
@@ -626,7 +633,8 @@ footer .heading {
   width: 400px;
   margin-left: 30px;
   margin-bottom: 40px;
-  border: 2px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  padding-bottom: 20px;
   cursor: pointer;
 }
 

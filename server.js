@@ -8,15 +8,17 @@ var bodyParser = require("body-parser");
 const { SignUpUserModel } = require("./signupdatabase");
 const { AdmissionUserModel } = require("./admissiondatbase");
 const path = require("path");
-const port = process.env.PORT;
+// require("dotenv").config()
+// const port = process.env.PORT ;
+const port = 3000;
 const bycrypt = require("bcryptjs");
 
 const monogoClient = require("mongodb").MongoClient;
 
-var adminObj = {
-  email: "admin@gmail.com",
-  password: "admin1278",
-};
+// var adminObj = {
+//   email: "admin@gmail.com",
+//   password: "admin1278",
+// };
 
 app.use(
   cors({
@@ -73,12 +75,12 @@ app.post("/signup", (req, res, next) => {
 });
 
 app.post("/login", (req, res, next) => {
-  SignUpUserModel.findOne(
-    {
-      email: req.body.email,
-    },
-    (err, data) => {
-      // console.log(data.email)
+  SignUpUserModel.findOne({ email: req.body.email }, (err, data) => {
+    // console.log(data.email)
+    if (
+      req.body.email !== "admin@gmail.com" ||
+      req.body.password !== "admin11"
+    ) {
       bycrypt.compare(req.body.password, data.password, (err, isFound) => {
         // console.log(data.password);
         // console.log(req.body.password);
@@ -87,43 +89,49 @@ app.post("/login", (req, res, next) => {
           res.status(200).send({
             message: "Successfully login  !",
           });
-        } else if (
-          req.body.email === "admin@gmail.com" ||
-          req.body.password === "admin11"
-        ) {
-          res.status(201).send({
-            message: "Going To Admin Page Please Wait .............",
-          });
         } else {
           res.status(405).send({
             message: "User Not Exits Please Sign Up !",
           });
         }
       });
+    } else {
+      res.status(201).send({
+        message: "Verifying Your Email ID",
+        adminmess: "ID Correct Going To Admin Page ! >>>>>>>",
+      });
     }
-  );
+  });
 });
 
 app.post("/admission", (req, res, next) => {
-  var newAdmissionPerson = AdmissionUserModel({
-    stDname: req.body.stDname,
-    age: req.body.age,
-    email: req.body.email,
-    contactno: req.body.contactno,
-    adress: req.body.adress,
-    nationality: req.body.nationality,
-    placeofBIrth: req.body.placeofBIrth,
-    level: req.body.level,
-  });
-  newAdmissionPerson.save((err, data) => {
-    if (!err) {
-      res.status(200).send({
-        message: "Your Form Has Been Submitted  !",
-        data,
+  AdmissionUserModel.findOne({ email: req.body.email }, (err, data) => {
+    if (data.email === req.body.email) {
+      res.status(405).send({
+        message: "User Already Exists Please Make Another Email ID !",
       });
     } else {
-      res.status(405).send({
-        message: "User creation Failed",
+      var newAdmissionPerson = AdmissionUserModel({
+        stDname: req.body.stDname,
+        age: req.body.age,
+        email: req.body.email,
+        contactno: req.body.contactno,
+        adress: req.body.adress,
+        nationality: req.body.nationality,
+        placeofBIrth: req.body.placeofBIrth,
+        level: req.body.level,
+      });
+      newAdmissionPerson.save((err, data) => {
+        if (!err) {
+          res.status(200).send({
+            message: "Your Form Has Been Submitted  !",
+            data,
+          });
+        } else {
+          res.status(405).send({
+            message: "User creation Failed",
+          });
+        }
       });
     }
   });
@@ -168,7 +176,7 @@ app.get("/signupdata", (req, res) => {
       var database = data.db("test");
       console.log("Connection Succesfull !");
       database
-        .collection("school admission data bases")
+        .collection("school sign up data bases")
         .find({})
         .toArray((error, db) => {
           if (error) {
