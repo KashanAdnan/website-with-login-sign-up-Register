@@ -8,17 +8,10 @@ var bodyParser = require("body-parser");
 const { SignUpUserModel } = require("./signupdatabase");
 const { AdmissionUserModel } = require("./admissiondatbase");
 const path = require("path");
-// require("dotenv").config()
-// const port = process.env.PORT ;
-const port = 3000;
+const port = process.env.PORT;
 const bycrypt = require("bcryptjs");
 
 const monogoClient = require("mongodb").MongoClient;
-
-// var adminObj = {
-//   email: "admin@gmail.com",
-//   password: "admin1278",
-// };
 
 app.use(
   cors({

@@ -2,23 +2,22 @@
 // const Swal  = require("sweetalert2");
 // const app = express();
 
-const url = "http://localhost:3000" || "https://sir-web.herokuapp.com"
+const url = "https://sir-web.herokuapp.com";
 function getData() {
-    
-    var showdata = document.getElementById("showdata");
-    const Http = new XMLHttpRequest();
-    Http.open("GET", url + "/admin");
-    Http.setRequestHeader("Content-Type", "application/json");
-    Http.send(null)
-    Http.onreadystatechange = (e) => {
-        console.log(e)
-        if (Http.readyState === 4) {
-            if (Http.status === 200) {
-                let jsonRes = JSON.parse(Http.responseText);
-                let out;
-                var i = 1;
-                jsonRes.map(data =>{
-                        out  = `
+  var showdata = document.getElementById("showdata");
+  const Http = new XMLHttpRequest();
+  Http.open("GET", url + "/admin");
+  Http.setRequestHeader("Content-Type", "application/json");
+  Http.send(null);
+  Http.onreadystatechange = (e) => {
+    console.log(e);
+    if (Http.readyState === 4) {
+      if (Http.status === 200) {
+        let jsonRes = JSON.parse(Http.responseText);
+        let out;
+        var i = 1;
+        jsonRes.map((data) => {
+          out = `
                         <tr>
                         <td>${i++}</td>
                         <td>${data.stDname}</td>
@@ -29,14 +28,12 @@ function getData() {
                         <td>${data.placeofBIrth}</td>
                         <td>${data.level}</td>
                         </tr>
-                        `
-                        showdata.innerHTML += out;
-                
-                })
-            }
-        }
+                        `;
+          showdata.innerHTML += out;
+        });
+      }
     }
-    console.log("hello")
-
+  };
+  console.log("hello");
 }
-getData();  
+getData();

@@ -2,7 +2,7 @@
 // const Swal  = require("sweetalert2");
 // const app = express();
 
-var port = "http://localhost:3000";
+var port = "https://sir-web.herokuapp.com";
 const signupdata = () => {
   const Http = new XMLHttpRequest();
   Http.open("GET", port + "/signupdata");

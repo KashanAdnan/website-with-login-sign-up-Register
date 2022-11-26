@@ -1,8 +1,6 @@
-// var port = "https://sir-web.herokuapp.com"
-var port = "http://localhost:3000";
+var port = "https://sir-web.herokuapp.com";
 
 function login() {
-  console.log("Hello");
   var obj = {
     email: document.getElementById("email").value,
     password: document.getElementById("password").value,
@@ -12,11 +10,8 @@ function login() {
   Http.setRequestHeader("Content-Type", "application/json");
   Http.send(JSON.stringify(obj));
   Http.onreadystatechange = (e) => {
-    console.log(e);
     if (Http.readyState === 4) {
       let jsonRes = JSON.parse(Http.responseText);
-      console.log(jsonRes);
-      console.log(Http.status);
       if (Http.status === 200) {
         swal("Good job!", jsonRes.message, "success");
         setInterval(function () {
@@ -24,7 +19,7 @@ function login() {
         }, 4000);
         console.log(jsonRes.message);
       } else if (Http.status === 201) {
-            alert("Are You Admin ")
+        alert("Are You Admin ");
         swal("Good job!", jsonRes.adminmess, "success");
         setInterval(function () {
           window.location.href = "../Admin Panel/index.html";

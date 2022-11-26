@@ -51,7 +51,7 @@ function admit() {
         }
         if (placeofBIrth.value === " ") {
           swal("Opps!", "Please Write Your place of Birth", "error");
-        }else {
+        } else {
           swal("Good job!", jsonRes.message, "success");
         }
       } else if (Http.status === 405) {
