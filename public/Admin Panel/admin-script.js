@@ -17,6 +17,8 @@ function getData() {
         let out;
         var i = 1;
         jsonRes.map((data) => {
+          console.log(data.lenght);
+
           out = `
                         <tr>
                         <td>${i++}</td>
