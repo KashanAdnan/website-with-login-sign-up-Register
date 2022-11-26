@@ -91,7 +91,7 @@ app.post("/login", (req, res, next) => {
     } else {
       res.status(201).send({
         message: "Verifying Your Email ID",
-        adminmess: "ID Correct Going To Admin Page ! >>>>>>>",
+        adminmess: "ID Correct Going To Admin Page ! "
       });
     }
   });
@@ -99,10 +99,12 @@ app.post("/login", (req, res, next) => {
 
 app.post("/admission", (req, res, next) => {
   AdmissionUserModel.findOne({ email: req.body.email }, (err, data) => {
-    if (data.email === req.body.email) {
-      res.status(405).send({
-        message: "User Already Exists Please Make Another Email ID !",
-      });
+    if (err || data) {
+      if (data.email === req.body.email) {
+        res.status(405).send({
+          message: "User Already Exists Please Make Another Email ID !",
+        });
+      }
     } else {
       var newAdmissionPerson = AdmissionUserModel({
         stDname: req.body.stDname,

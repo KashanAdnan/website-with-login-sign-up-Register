@@ -17,7 +17,7 @@ function getData() {
         let out;
         var i = 1;
         jsonRes.map((data) => {
-          console.log(data.lenght);
+          console.log(data) 
 
           out = `
                         <tr>
