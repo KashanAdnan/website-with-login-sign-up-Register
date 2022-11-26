@@ -1,7 +1,3 @@
-// const express = require("express");
-// const Swal  = require("sweetalert2");
-// const app = express();
-
 var port = "https://sir-web.herokuapp.com"
 const sinup = () => {
     var obj = {
@@ -38,7 +34,7 @@ const sinup = () => {
                 else if (loginpasss.value === null) {
                     swal("Opps!", "***Please Fill Password Input !", "error");
                 }
-                else if (loginpasss.value > 8 && loginconpass.value > 8) {
+                else if (loginpasss.value < 8 && loginconpass.value < 8) {
                     swal("Opps!", "***The Password Must Be 8 Character !", "error");
                 }
 

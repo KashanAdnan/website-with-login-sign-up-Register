@@ -54,8 +54,8 @@ function admit() {
         } else {
           swal("Good job!", jsonRes.message, "success");
           setInterval(function () {
-            window.location.href  = "../Home/home.html"
-          })
+            window.location.href = "../Home/home.html";
+          });
         }
       } else if (Http.status === 405) {
         console.log(Http.status);
