@@ -28,11 +28,13 @@ body {
     margin-top: -10px;
     border-bottom-right-radius: 100px;
 }
-.nav .logo img{
+
+.nav .logo img {
     width: 50px;
     border-radius: 50%;
-  height: 50px;  
+    height: 50px;
 }
+
 .nav .logo h1 {
     margin-top: 10px;
     font-size: 34px;
@@ -71,7 +73,7 @@ body {
     background-color: transparent;
     font-family: 'Poppins';
     border-top: 1px solid #fff;
-    border-bottom:  1px solid #fff;
+    border-bottom: 1px solid #fff;
     border-left: 1px solid #ffffff;
     border-right: 1px solid #fff;
 }
@@ -80,12 +82,13 @@ body {
     color: #fff;
     text-decoration: none;
 }
+
 .buttons button:hover {
     box-shadow: 0px 0 10px rgba(0, 0, 0, .62);
     border-radius: 20px;
     cursor: pointer;
     transform: scale(110%);
-     /* margin-right: 0px; */
+    /* margin-right: 0px; */
     transition: 0.5s;
 }
 
@@ -99,9 +102,10 @@ body {
     background-size: 100% 100%;
 }
 
-.signup-card-container img{
+.signup-card-container img {
     width: 500px;
 }
+
 .signup-card {
     width: 1005;
     /* height: 300px; */
@@ -202,7 +206,7 @@ body {
 .signup-card input[type="text"],
 .signup-card input[type="number"],
 .signup-card input[type="email"],
-.signup-card input[type="password"]{
+.signup-card input[type="password"] {
     border: none;
     outline: none;
     background: transparent;
@@ -211,10 +215,11 @@ body {
     padding-left: calc(1rem * 3.5);
     width: 350px;
     transition: background .5s;
-    color:  #000;
+    color: #000;
     background-color: rgba(200, 220, 255, 0.6);
 }
-.signup-card input{
+
+.signup-card input {
     background-color: rgba(148, 148, 255, 0.788);
 }
 
@@ -242,14 +247,15 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     cursor: pointer;
-    transition:  .5s;
+    transition: .5s;
     width: 150px;
     /* margin-left: -500px; */
     transform: translateX(-60%);
 }
-.signup-card button:hover{
+
+.signup-card button:hover {
     box-shadow: 0px 0 25px rgba(0, 0, 0, 0.61);
-    transform: translateX(10%)   ;
+    transform: translateX(10%);
     background-color: rgb(104, 104, 255) !important;
     /* transform: rotate(180deg); */
     /* border-radius: 30px; */
@@ -305,7 +311,7 @@ footer {
     width: 100%;
     height: auto;
     padding: 50px 100px;
-    background-color:  rgb(104, 104, 255) ;
+    background-color: rgb(104, 104, 255);
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -440,4 +446,62 @@ footer .heading {
     text-align: center;
     font-size: 40px;
     font-weight: 300;
+}
+
+
+@media (max-width : 700px) {
+    .nav {
+        width: 372.6500000000001px !important;
+        padding: 10px 4px;
+        /* margin-top: 40px; */
+    }
+
+    .logo h1 {
+        font-size: 27px !important;
+        width: 300px;
+    }
+
+    .nav-links li a {
+        font-size: 13px;
+        width: 60px;
+    }
+
+    .signup-card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 1100px;
+        margin-left: 165px;
+        width: 500px;
+    }
+
+    .signup-card-container img {
+        width: 454px;
+        margin-top: 40px;
+    }
+
+    footer .footer-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .buttons{
+        margin-left: -93px;
+    }
+    .buttons button {
+        padding: 10px 25px;
+        border: 0;
+        /* border: 1px solid #EFF5F5; */
+        margin-right: -31px;
+        margin-left: 40px;
+        font-size: 15px;
+        background-color: transparent;
+        font-family: 'Poppins';
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        border-left: 1px solid #ffffff;
+        border-right: 1px solid #fff;
+    }
 }
