@@ -1,4 +1,5 @@
 var port = "https://sir-web.herokuapp.com"
+// var port = "http://localhost:3000"
 const sinup = () => {
     var obj = {
         email: document.getElementById("email").value,
@@ -16,7 +17,6 @@ const sinup = () => {
         console.log(e)
         if (Http.readyState === 4) {
             if (Http.status === 200) {
-                var jsonRes = JSON.parse(Http.responseText);
                 var loginemail = document.getElementById("email");
                 var loginuser = document.getElementById("username");
                 var loginphone = document.getElementById("phone");
@@ -24,7 +24,8 @@ const sinup = () => {
                 var loginconpass = document.getElementById("confirm-password");
                 localStorage.setItem('username' , loginuser.value);
                 localStorage.setItem('email' , loginemail.value);
-
+                
+                var jsonRes = JSON.parse(Http.responseText);
                 if (loginuser.value === null) {
                     swal("Opps!", "***Please Fill User Input !", "error");
                 }
@@ -37,13 +38,15 @@ const sinup = () => {
                 else if (loginpasss.value < 8 && loginconpass.value < 8) {
                     swal("Opps!", "***The Password Must Be 8 Character !", "error");
                 }
-
+                
                 else if (loginphone.value === null) {
                     swal("Opps!", "***Please Fill Pho Input !", "error");
                 }
                 else if (loginconpass.value !== loginpasss.value) {
                     swal("Opps!", "***Please Match the Password & Confirm Passwor Input !", "error");
-                } else {
+                } 
+                else {
+                    console.log(jsonRes.message)
                     swal("Good job!", jsonRes.message, "success");
                     setInterval( () => {
                         window.location.href="../Login/login.html"
@@ -52,11 +55,12 @@ const sinup = () => {
             }
             else {
                 swal("Opps!", jsonRes.message, "error");
-                // window.location.reload()
+                // console.log(jsonRes.data)
+                window.location.reload()
             }
         }
     }
-
-
+    
+    
     return false;
 }

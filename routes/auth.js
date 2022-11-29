@@ -1,17 +1,15 @@
-var express = require("express");
+const express = require("express");
+const router = express.Router();
 var fs = require("fs");
 var http = require("http");
 var color = require("colors");
 var cors = require("cors");
 var app = express();
 var bodyParser = require("body-parser");
-const { SignUpUserModel } = require("./signupdatabase");
-const { AdmissionUserModel } = require("./admissiondatbase");
+const { SignUpUserModel } = require("../signupdatabase");
+const { AdmissionUserModel } = require("../admissiondatbase");
 const path = require("path");
-// const port = 3000;
-const port = process.env.PORT;
 const bycrypt = require("bcryptjs");
-
 const monogoClient = require("mongodb").MongoClient;
 
 app.use(
@@ -23,7 +21,33 @@ app.use(
 app.use(bodyParser.json());
 app.use("/", express.static(path.resolve(path.join(__dirname, "public"))));
 
-app.post("/signup", (req, res, next) => {
+router.post("/login", (req, res, next) => {
+  SignUpUserModel.findOne({ email: req.body.email }, (err, data) => {
+    if (
+      req.body.email !== "admin@gmail.com" ||
+      req.body.password !== "admin11"
+    ) {
+      bycrypt.compare(req.body.password, data.password, (err, isFound) => {
+        if (isFound) {
+          res.status(200).send({
+            message: "Successfully login  !",
+          });
+        } else {
+          res.status(405).send({
+            message: "User Not Exits Please Sign Up !",
+          });
+        }
+      });
+    } else {
+      res.status(201).send({
+        message: "Verifying Your Email ID",
+        adminmess: "ID Correct Going To Admin Page ! ",
+      });
+    }
+  });
+});
+
+router.post("/signup", (req, res, next) => {
   SignUpUserModel.findOne(
     {
       email: req.body.email,
@@ -68,37 +92,7 @@ app.post("/signup", (req, res, next) => {
   );
 });
 
-app.post("/login", (req, res, next) => {
-  SignUpUserModel.findOne({ email: req.body.email }, (err, data) => {
-    // console.log(data.email)
-    if (
-      req.body.email !== "admin@gmail.com" ||
-      req.body.password !== "admin11"
-    ) {
-      bycrypt.compare(req.body.password, data.password, (err, isFound) => {
-        // console.log(data.password);
-        // console.log(req.body.password);
-        // console.log(isFound);
-        if (isFound) {
-          res.status(200).send({
-            message: "Successfully login  !",
-          });
-        } else {
-          res.status(405).send({
-            message: "User Not Exits Please Sign Up !",
-          });
-        }
-      });
-    } else {
-      res.status(201).send({
-        message: "Verifying Your Email ID.....",
-        adminmess: "Going To Admin Page ! ",
-      });
-    }
-  });
-});
-
-app.post("/admission", (req, res, next) => {
+router.post("/admission", (req, res, next) => {
   AdmissionUserModel.findOne({ email: req.body.email }, (err, data) => {
     if (err || data) {
       if (data.email === req.body.email) {
@@ -133,7 +127,7 @@ app.post("/admission", (req, res, next) => {
   });
 });
 
-app.get("/admin", (req, res) => {
+router.get("/admin", (req, res) => {
   monogoClient.connect(
     "mongodb+srv://kashan:kashan654321@cluster0.c6v8zv7.mongodb.net/?retryWrites=true&w=majority",
     {
@@ -158,7 +152,8 @@ app.get("/admin", (req, res) => {
     }
   );
 });
-app.get("/signupdata", (req, res) => {
+
+router.get("/signupdata", (req, res) => {
   monogoClient.connect(
     "mongodb+srv://kashan:kashan654321@cluster0.c6v8zv7.mongodb.net/?retryWrites=true&w=majority",
     {
@@ -184,6 +179,4 @@ app.get("/signupdata", (req, res) => {
   );
 });
 
-app.listen(port, () => {
-  console.log("Server is Running On PORT Number : ", port);
-});
+module.exports = router;

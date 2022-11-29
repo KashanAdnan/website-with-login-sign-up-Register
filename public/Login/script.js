@@ -19,11 +19,11 @@ function login() {
         }, 4000);
         console.log(jsonRes.message);
       } else if (Http.status === 201) {
-        alert("Are You Admin ");
+        swal("Good job!", jsonRes.message, "success");
         swal("Good job!", jsonRes.adminmess, "success");
         setInterval(function () {
           window.location.href = "../Admin Panel/index.html";
-        }, 10000);
+        }, 4000);
       } else if (Http.status === 405) {
         swal("Opps!", jsonRes.message, "error");
         console.log(jsonRes.message);
