@@ -1,5 +1,5 @@
-// var port = "https://sir-web.herokuapp.com";
-var port = "http://localhost:3000"
+var port = "https://sir-web.herokuapp.com";
+// var port = "http://localhost:3000"
 
 function login() {
   var obj = {

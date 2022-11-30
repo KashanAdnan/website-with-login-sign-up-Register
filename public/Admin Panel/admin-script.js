@@ -2,8 +2,8 @@
 // const Swal  = require("sweetalert2");
 // const app = express();
 
-// const url = "https://sir-web.herokuapp.com";
-const url = "http://localhost:3000"
+const url = "https://sir-web.herokuapp.com";
+// const url = "http://localhost:3000"
 
 function getData() {
   var showdata = document.getElementById("showdata");
