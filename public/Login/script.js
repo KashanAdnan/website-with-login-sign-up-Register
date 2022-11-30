@@ -1,4 +1,5 @@
-var port = "https://sir-web.herokuapp.com";
+// var port = "https://sir-web.herokuapp.com";
+var port = "http://localhost:3000"
 
 function login() {
   var obj = {
@@ -24,7 +25,7 @@ function login() {
         setInterval(function () {
           window.location.href = "../Admin Panel/index.html";
         }, 4000);
-      } else if (Http.status === 405) {
+      } else{
         swal("Opps!", jsonRes.message, "error");
         console.log(jsonRes.message);
       }

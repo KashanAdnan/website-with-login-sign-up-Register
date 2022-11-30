@@ -402,3 +402,109 @@ footer .heading {
     font-size: 40px;
     font-weight: 300;
 }
+@media (max-width : 700px) {
+    .nav {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-around !important;
+        padding: 10px 90px !important;
+        background-color: rgb(104, 104, 255) !important;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4) !important;
+        z-index: 1 !important;
+        top: 0 !important;
+        width: 374.6500000000001px !important;
+        margin-bottom: 50px !important;
+        position: sticky !important;
+        height: 189px;
+        color: #000;
+        font-family: 'Poppins', sans-serif;
+        margin-top: -10px;
+        border-bottom-right-radius: 100px;
+        flex-direction: column;
+    }
+    .nav-links{
+            margin-top: -51px;
+            margin-bottom: -24px;
+        
+    }
+
+    .logo h1 {
+        font-size: 27px !important;
+        width: 300px;
+    }
+
+    .nav-links li a {
+        font-size: 13px;
+        width: 60px;
+    }
+
+    .signup-card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 1100px;
+        margin-left: 165px;
+        width: 500px;
+    }
+
+    .signup-card-container img {
+        width: 310px;
+        margin-top: 40px;
+    }   
+    footer .footer-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .buttons{
+        margin-left: -93px;
+    }
+    .buttons button {
+        padding: 10px 25px;
+        border: 0;
+        /* border: 1px solid #EFF5F5; */
+        margin-right: -31px;
+        margin-left: 40px;
+        font-size: 15px;
+        background-color: transparent;
+        font-family: 'Poppins';
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        border-left: 1px solid #ffffff;
+        border-right: 1px solid #fff;
+    }
+    .login-card-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        padding: 30px 50px;
+        margin-bottom: 50px;
+        flex-direction: column;
+        width: 347px;
+        height: 744px;
+        border-radius: 10px;
+    }
+    .login-card-container img {
+        width: 320px;
+        margin-top: -30px;
+    }
+    footer {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 44px 70px;
+        background-color: rgb(104, 104, 255);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        font-family: 'Poppins';
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        border-top-left-radius: 100px;
+    }
+    footer .footer-container .sec {
+        margin-right: 506px;
+    }
+}

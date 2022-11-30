@@ -8,8 +8,8 @@ var bodyParser = require("body-parser");
 const { SignUpUserModel } = require("./signupdatabase");
 const { AdmissionUserModel } = require("./admissiondatbase");
 const path = require("path");
-// const port = 3000;
-const port = process.env.PORT;
+const port = 3000;
+// const port = process.env.PORT;
 const bycrypt = require("bcryptjs");
 
 const monogoClient = require("mongodb").MongoClient;
@@ -79,7 +79,7 @@ app.post("/login", (req, res, next) => {
         // console.log(data.password);
         // console.log(req.body.password);
         // console.log(isFound);
-        if (isFound) {
+        if (isFound && data.email === req.body.email) {
           res.status(200).send({
             message: "Successfully login  !",
           });

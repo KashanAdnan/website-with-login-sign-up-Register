@@ -477,10 +477,9 @@ footer .heading {
     }
 
     .signup-card-container img {
-        width: 454px;
+        width: 310px;
         margin-top: 40px;
-    }
-
+    }   
     footer .footer-container {
         display: flex;
         flex-direction: column;
@@ -503,5 +502,78 @@ footer .heading {
         border-bottom: 1px solid #fff;
         border-left: 1px solid #ffffff;
         border-right: 1px solid #fff;
+    }
+    .signup-card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 894px;
+        margin-left: -5px;
+        width: 342px;
+    }
+    .signup-card input[type="text"], .signup-card input[type="number"], .signup-card input[type="email"], .signup-card input[type="password"] {
+        border: none;
+        outline: none;
+        background: transparent;
+        border-bottom: 1px solid black;
+        padding: 1rem 1.5rem;
+        padding-left: calc(1rem * 3.5);
+        width: 294px;
+        transition: background .5s;
+        color: #000;
+        background-color: rgba(200, 220, 255, 0.6);
+    }
+    .signup-card-form h1 {
+        font-size: 2rem;
+        font-weight: 400;
+        color: #000;
+        margin-left: -151px;
+        text-align: left;
+        width: 400px;
+        margin-top: 56px;
+        text-align: center;
+    }
+    .signup-card-form {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        width: 347px;
+        margin-top: -80px;
+    }
+    .signup-card button {
+        padding: 1rem 1.5rem;
+        font-family: 'Poppins';
+        background-color: rgb(134, 134, 255);
+        color: #fff;
+        border: 0;
+        outline: 0;
+        /* border-radius: 10px; */
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: .5s;
+        width: 150px;
+        margin-left: 41px;
+        transform: translateX(-60%);
+    }
+    footer {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 44px 40px;
+        background-color: rgb(104, 104, 255);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        font-family: 'Poppins';
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        border-top-left-radius: 100px;
+    }
+    footer .footer-container .sec {
+        margin-right: 506px;
     }
 }
