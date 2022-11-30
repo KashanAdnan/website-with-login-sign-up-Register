@@ -70,19 +70,16 @@ app.post("/signup", (req, res, next) => {
 
 app.post("/login", (req, res, next) => {
   SignUpUserModel.findOne({ email: req.body.email }, (err, data) => {
-    // console.log(data.email)
     if (
       req.body.email !== "admin@gmail.com" ||
       req.body.password !== "admin11"
     ) {
       bycrypt.compare(req.body.password, data.password, (err, isFound) => {
-        // console.log(data.password);
-        // console.log(req.body.password);
-        // console.log(isFound);
-        if (isFound && data.email === req.body.email) {
+        if (data.email === req.body.email && isFound) {
           res.status(200).send({
             message: "Successfully login  !",
           });
+          return;
         } else {
           res.status(405).send({
             message: "User Not Exits Please Sign Up !",
