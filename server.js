@@ -75,7 +75,7 @@ app.post("/login", (req, res, next) => {
       req.body.password !== "admin11"
     ) {
       bycrypt.compare(req.body.password, data.password, (err, isFound) => {
-        if (data.email === req.body.email  &&  isFound) {
+        if (data.email !== req.body.email  &&  isFound) {
           res.status(200).send({
             message: "Successfully login  !",
           });
