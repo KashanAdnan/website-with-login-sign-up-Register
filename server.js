@@ -84,6 +84,7 @@ app.post("/login", (req, res, next) => {
           res.status(405).send({
             message: "User Not Exits Please Sign Up !",
           });
+          return;
         }
       });
     } else {
