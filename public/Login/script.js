@@ -1,5 +1,5 @@
 var port = "https://sir-web.herokuapp.com";
-// var port = "http://localhost:3000"
+// var port = "http://localhost:3000";
 
 function login() {
   var obj = {
@@ -14,18 +14,20 @@ function login() {
     if (Http.readyState === 4) {
       let jsonRes = JSON.parse(Http.responseText);
       if (Http.status === 200) {
-        swal("Good job!", jsonRes.message, "success");
+        swal("Good job!", jsonRes.data , "success");
         setInterval(function () {
           window.location.href = "../Home/home.html";
-        }, 4000);
-        console.log(jsonRes.message);
-      } else if (Http.status === 201) {
-        swal("Good job!", jsonRes.message, "success");
-        swal("Good job!", jsonRes.adminmess, "success");
-        setInterval(function () {
-          window.location.href = "../Admin Panel/index.html";
-        }, 4000);
-      } else{
+        }, 3000);
+        console.log(jsonRes);
+        return;
+      }
+      else if (Http.status === 201) {
+        swal("Good job!", jsonRes.username , "success");
+        setInterval(() => {
+          window.location.href = "../Admin Panel/index.html"  
+        }, 3000);
+      }
+      else {
         swal("Opps!", jsonRes.message, "error");
         console.log(jsonRes.message);
       }

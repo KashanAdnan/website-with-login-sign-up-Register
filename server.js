@@ -70,27 +70,34 @@ app.post("/signup", (req, res, next) => {
 
 app.post("/login", (req, res, next) => {
   SignUpUserModel.findOne({ email: req.body.email }, (err, data) => {
-    if (
-      req.body.email !== "admin@gmail.com" &&
-      req.body.password !== "admin11" &&
-      data.email === req.body.email
-    ) {
-      bycrypt.compare(req.body.password, data.password, (err, isFound) => {
-        if (  isFound) {
-          res.status(200).send({
-            message: "Successfully login  !",
-          });
-          return;
-        } else {
-          res.status(405).send({
-            message: "User Not Exits Please Sign Up !",
-          });
-        }
-      });
-    } else {
+    if (data) {
+      if (data.email === req.body.email) {
+        bycrypt.compare(req.body.password, data.password, (err, isFound) => {
+          if (isFound) {
+            res.status(200).send({
+              data : data.username +  "  Welcome To Our Website ! ",
+            });
+
+          } else {
+            res.status(405).send({
+              message: "What Are You Doing Man Password Is Incorrect  !",
+            });
+          }
+        });
+      } else {
+        res.status(405).send({
+          message: "Password is Incorrect !",
+        });
+      }
+    } else if(req.body.email === "iamadmin@gmail.com" &&  req.body.password === "adminisverysafe"){
       res.status(201).send({
-        message: "Verifying Your Email ID.....",
-        adminmess: "Going To Admin Page ! ",
+        message : "You Are Admin !",
+        username : "Syed Tariq Ahmed The Super Admin Welcome To Admin Page !"
+      })
+    } 
+    else {
+      res.status(405).send({
+        message: "Email is Inccorect !",
       });
     }
   });
@@ -131,7 +138,7 @@ app.post("/admission", (req, res, next) => {
   });
 });
 
-app.get("/admin", (req, res) => {
+app.get("/admin", (_req, res) => {
   monogoClient.connect(
     "mongodb+srv://kashan:kashan654321@cluster0.c6v8zv7.mongodb.net/?retryWrites=true&w=majority",
     {
@@ -156,7 +163,7 @@ app.get("/admin", (req, res) => {
     }
   );
 });
-app.get("/signupdata", (req, res) => {
+app.get("/signupdata", (_req, res) => {
   monogoClient.connect(
     "mongodb+srv://kashan:kashan654321@cluster0.c6v8zv7.mongodb.net/?retryWrites=true&w=majority",
     {
