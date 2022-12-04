@@ -8,8 +8,8 @@ var bodyParser = require("body-parser");
 const { SignUpUserModel } = require("./signupdatabase");
 const { AdmissionUserModel } = require("./admissiondatbase");
 const path = require("path");
-const port = 3000;
-// const port = process.env.PORT;
+// const port = 3000;
+const port = process.env.PORT;
 const bycrypt = require("bcryptjs");
 
 const monogoClient = require("mongodb").MongoClient;
