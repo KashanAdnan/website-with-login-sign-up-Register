@@ -75,9 +75,8 @@ app.post("/login", (req, res, next) => {
         bycrypt.compare(req.body.password, data.password, (err, isFound) => {
           if (isFound) {
             res.status(200).send({
-              data : data.username +  "  Welcome To Our Website ! ",
+              data: data.username + "  Welcome To Our Website ! ",
             });
-
           } else {
             res.status(405).send({
               message: "What Are You Doing Man Password Is Incorrect  !",
@@ -89,13 +88,15 @@ app.post("/login", (req, res, next) => {
           message: "Password is Incorrect !",
         });
       }
-    } else if(req.body.email === "iamadmin@gmail.com" &&  req.body.password === "adminisverysafe"){
+    } else if (
+      req.body.email === "iamadmin@gmail.com" &&
+      req.body.password === "adminisverysafe"
+    ) {
       res.status(201).send({
-        message : "You Are Admin !",
-        username : "Syed Tariq Ahmed  Admin Welcome To Admin Page !"
-      })
-    } 
-    else {
+        message: "You Are Admin !",
+        username: "Syed Tariq Ahmed  Admin Welcome To Admin Page !",
+      });
+    } else {
       res.status(405).send({
         message: "Email is Inccorect !",
       });
@@ -153,31 +154,6 @@ app.get("/admin", (req, res) => {
       console.log("Connection Succesfull !");
       database
         .collection("school admission data bases")
-        .find({})
-        .toArray((error, db) => {
-          if (error) {
-            throw error;
-          }
-          res.send(db);
-        });
-    }
-  );
-});
-app.get("/signupdata", (req, res) => {
-  monogoClient.connect(
-    "mongodb+srv://kashan:kashan654321@cluster0.c6v8zv7.mongodb.net/?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    },
-    (err, data) => {
-      if (err) {
-        console.log(err);
-      }
-      var database = data.db("test");
-      console.log("Connection Succesfull !");
-      database
-        .collection("school sign up data bases")
         .find({})
         .toArray((error, db) => {
           if (error) {
