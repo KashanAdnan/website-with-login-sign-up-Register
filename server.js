@@ -8,8 +8,8 @@ var bodyParser = require("body-parser");
 const { SignUpUserModel } = require("./signupdatabase");
 const { AdmissionUserModel } = require("./admissiondatbase");
 const path = require("path");
-// const port = 3000;
-const port = process.env.PORT;
+const port = 3000;
+// const port = process.env.PORT;
 const bycrypt = require("bcryptjs");
 
 const monogoClient = require("mongodb").MongoClient;
@@ -23,7 +23,7 @@ app.use(
 app.use(bodyParser.json());
 app.use("/", express.static(path.resolve(path.join(__dirname, "public"))));
 
-app.post("/signup", (req, res, next) => {
+app.post("/", (req, res, next) => {
   SignUpUserModel.findOne(
     {
       email: req.body.email,
@@ -92,7 +92,7 @@ app.post("/login", (req, res, next) => {
     } else if(req.body.email === "iamadmin@gmail.com" &&  req.body.password === "adminisverysafe"){
       res.status(201).send({
         message : "You Are Admin !",
-        username : "Syed Tariq Ahmed The Super Admin Welcome To Admin Page !"
+        username : "Syed Tariq Ahmed  Admin Welcome To Admin Page !"
       })
     } 
     else {
@@ -138,7 +138,7 @@ app.post("/admission", (req, res, next) => {
   });
 });
 
-app.get("/admin", (_req, res) => {
+app.get("/admin", (req, res) => {
   monogoClient.connect(
     "mongodb+srv://kashan:kashan654321@cluster0.c6v8zv7.mongodb.net/?retryWrites=true&w=majority",
     {
@@ -163,7 +163,7 @@ app.get("/admin", (_req, res) => {
     }
   );
 });
-app.get("/signupdata", (_req, res) => {
+app.get("/signupdata", (req, res) => {
   monogoClient.connect(
     "mongodb+srv://kashan:kashan654321@cluster0.c6v8zv7.mongodb.net/?retryWrites=true&w=majority",
     {
