@@ -451,14 +451,14 @@ footer .heading {
 
 @media (max-width : 700px) {
     .nav {
-        width: 345.6500000000001px !important;
-        padding: 10px 4px;
+        width: 417.6500000000001px !important;
+        padding: 10px 10px;
         /* margin-top: 40px; */
         margin-left: -39px;
         display: flex;
         flex-direction: column;
-    }
 
+    }
     .logo h1 {
         font-size: 27px !important;
         width: 300px;
@@ -477,10 +477,9 @@ footer .heading {
         justify-content: center;
         flex-direction: column;
         height: 894px;
-        margin-left: -26px !important;
-        width: 313px !important;
+        margin-left: 4px !important;
+        width: 335px !important;
     }
-
     .signup-card-container img {
         width: 310px;
         margin-top: 40px;

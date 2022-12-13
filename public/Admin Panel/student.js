@@ -2,38 +2,41 @@
 // const Swal  = require("sweetalert2");
 // const app = express();
 
-// var port = "https://sir-web.herokuapp.com";
-// const signupdata = () => {
-//   const Http = new XMLHttpRequest();
-//   Http.open("GET", port + "/signupdata");
-//   Http.setRequestHeader("Content-Type", "application/json");
-//   Http.send(null);
-//   var showdata = document.getElementById("showdata");
-//   Http.onreadystatechange = (e) => {
-//     console.log(e);
-//     if (Http.readyState === 4) {
-//       if (Http.status === 200) {
-//         var jsonRes = JSON.parse(Http.responseText);
-//         console.log(jsonRes)
-//         var i = 1
-//         let out;
-//         jsonRes.map(data =>{
-//             console.log(data)
-//             out = `
-//             <tr>
-//             <td>${i++}</td>
-//             <td>${data.username}</td>
-//             <td>${data.email}</td>
-//             <td>${data.phone}</td>
-//             </tr>
+const url = "https://sir-web.herokuapp.com";
+// const url = "http://localhost:3000"
 
-//             `
-//             showdata.innerHTML += out
-//         })
-//       }
-//     }
-//   };
+function getData() {
+  var showdata = document.getElementById("showdata");
+  const Http = new XMLHttpRequest();
+  Http.open("GET", url + "/signupdata");
+  Http.setRequestHeader("Content-Type", "application/json");
+  Http.send(null);
+  Http.onreadystatechange = (e) => {
+    console.log(e);
+    if (Http.readyState === 4) {
 
-//   return false;
-// };
-// signupdata()
+        let jsonRes = JSON.parse(Http.responseText);
+        console.log(jsonRes)
+        let out;
+        var i = 1;
+        jsonRes.map((data) => {
+          console.log(data) 
+
+          out = `
+                        <tr>
+                        <td>${i++}</td>
+                        <td>${data.stDname}</td>
+                        <td>${data.email}</td>
+                        <td>${data.adress}</td>
+                        <td>${data.contactno}</td>
+                        <td>${data.level}</td>
+                        </tr>
+                        `;
+          showdata.innerHTML += out;
+        });
+    
+    }
+  };
+  console.log("hello");
+}
+getData();

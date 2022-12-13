@@ -9,10 +9,10 @@ const { SignUpUserModel } = require("./signupdatabase");
 const { AdmissionUserModel } = require("./admissiondatbase");
 const path = require("path");
 // const port = 3000;
+// const storage  = require("@google-cloud/storage")
 const port = process.env.PORT;
 const bycrypt = require("bcryptjs");
-
-const monogoClient = require("mongodb").MongoClient;
+// const monogoClient = require("mongodb").MongoClient;
 
 app.use(
   cors({
@@ -23,7 +23,7 @@ app.use(
 app.use(bodyParser.json());
 app.use("/", express.static(path.resolve(path.join(__dirname, "public"))));
 
-app.post("/", (req, res, next) => {
+app.post("/signup", (req, res, next) => {
   SignUpUserModel.findOne(
     {
       email: req.body.email,
@@ -31,7 +31,7 @@ app.post("/", (req, res, next) => {
     (err, data) => {
       if (err || data) {
         if (data.email === req.body.email) {
-          res.status(405).send({
+          res.status(409).send({
             message: "Please Make Another Account User Already Exists !",
           });
           return;
@@ -40,6 +40,7 @@ app.post("/", (req, res, next) => {
         const saltRounds = 12;
         bycrypt.genSalt(saltRounds, function (err, salt) {
           bycrypt.hash(req.body.password, salt, function (err, hash) {
+            console.log(hash);
             var newSignUpPerson = SignUpUserModel({
               username: req.body.username,
               email: req.body.email,
@@ -140,31 +141,23 @@ app.post("/admission", (req, res, next) => {
 });
 
 app.get("/admin", (req, res) => {
-  monogoClient.connect(
-    "mongodb+srv://kashan:kashan654321@cluster0.c6v8zv7.mongodb.net/?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    },
-    (err, data) => {
-      if (err) {
-        console.log(err);
-      }
-      var database = data.db("test");
-      console.log("Connection Succesfull !");
-      database
-        .collection("school admission data bases")
-        .find({})
-        .toArray((error, db) => {
-          if (error) {
-            throw error;
-          }
-          res.send(db);
-        });
+  var data = SignUpUserModel.find({}, (err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(data);
     }
-  );
+  });
 });
-
+app.get("/signupdata", (req, res) => {
+  var data = AdmissionUserModel.find({}, (err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(data);
+    }
+  });
+});
 app.listen(port, () => {
   console.log("Server is Running On PORT Number : ", port);
 });

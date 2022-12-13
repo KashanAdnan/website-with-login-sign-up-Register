@@ -19,30 +19,23 @@
 
 <body>
   <div class="nav">
-    <div class="logo">
-      <h1>Syed Tariq Ahmed</h1>
-    </div>
-    <div class="nav-links">
-      <ul>
-        <li><a href="home">HOME</a></li>
-        <li><a href="#course">COURSES</a></li>
-        <li><a href="#teacher">TEACHERS</a></li>
-        <li><a href="#contact">CONTACT</a></li>
-      </ul>
-    </div>
-    <div class="buttons">
-      <a href="../Register/register.html">Admission</a>
-    </div>
-    <div class="icon">
-      <i class="fa-solid fa-user"></i>
-    </div>
-    <div class="userdetail">
-
-      <h3 id="username" class="user">Kashan Adnan's Account</h3>
-      <p id="email">khanzaidaboy@gmail.com</p>
-
-    </div>
-  </div>
+        <div class="logo">
+          <h1>
+          Syed Tarique Ahmed
+          </h1>
+        </div>
+        <div class="nav-links">
+          <ul>
+            <li><a href="./home.html">HOME</a></li>
+            <li><a href="#">ABOUT</a></li>
+            <li><a href="#">SERVICES</a></li>
+            <li><a href="#">CONTACT</a></li>
+          </ul>
+        </div>
+        <div class="buttons">
+          <button><a href="../Register/register.html">Admisson</a></button>
+        </div>
+      </div>
   <div class="main">
     <div class="container">
       <div class="sidebar">
@@ -541,7 +534,14 @@
     </div>
   </footer>
 </body>
-<script src="script.js"></script>
+<script>
+  $(document).ready(function(){
+  $('.btn').click(function(){
+    $('.items').toggleClass("show");
+    $('ul li').toggleClass("hide");
+  });
+});
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"

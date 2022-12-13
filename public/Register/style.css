@@ -9,6 +9,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    text-decoration: none;
 }
 
 .nav {
@@ -20,7 +21,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4) !important;
     z-index: 1 !important;
     top: 0 !important;
-    width: 1346.65px !important;
+    width: 1390px !important;
     margin-bottom: 50px !important;
     position: sticky !important;
     color: #fff;
@@ -34,6 +35,11 @@ body {
     font-size: 34px;
     font-weight: 500;
     color: #D6E4E5;
+    cursor: pointer;
+}
+.nav .logo h1 a{
+    text-decoration: none;
+    color: #fff;
 }
 
 .nav .line {

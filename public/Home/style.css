@@ -8,83 +8,87 @@
 
 .nav {
   display: flex !important;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  background-color: rgb(104, 104, 255);
-  color: #fff;
-  padding-bottom: 10px;
-  top: 0;
-  position: sticky;
-  z-index: 1;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 834);
-  flex-wrap: nowrap;
+  align-items: center !important;
+  justify-content: space-around !important;
+  padding: 10px 90px !important;
+  background-color: rgb(104, 104, 255) !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4) !important;
+  z-index: 1 !important;
+  top: 0 !important;
+  width: 1346.65px !important;
+  margin-bottom: 50px !important;
+  position: fixed !important;
+  color: #000;
+  font-family: 'Poppins', sans-serif;
+  height: 90px;
+  margin-top: -10px;
+  border-bottom-right-radius: 100px;
 }
-
-.userdetail {
-  margin-top: 20px;
+.main{
+  margin-top: 50px;
 }
-
-.userdetail h3 {
-  font-size: 20px;
-  font-weight: 300;
-}
-
-.userdetail p {
-  font-size: 15px;
-  color: rgb(203, 221, 255);
-}
-
-.icon i {
-  font-size: 30px;
-  border: 1px solid #fff;
+.nav .logo img {
+  width: 50px;
   border-radius: 50%;
-  padding: 10px;
-  margin-right: -40px;
-  position: relative;
+  height: 50px;
+}
+
+.nav .logo h1 {
+  margin-top: 10px;
+  font-size: 34px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.nav .line {
+  border: 1px solid #ccc;
 }
 
 .nav-links ul {
   display: flex;
+  list-style: none;
   align-items: center;
-  justify-content: space-around;
-  width: 400px;
-  margin-top: 24px;
-  list-style-type: none;
+  margin-top: 20px;
 }
 
-.nav .nav-links ul li a {
+.nav-links ul li {
+  margin-right: 20px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.nav-links ul li a {
   text-decoration: none;
   color: #fff;
-  font-size: 17px;
 }
 
-.nav .logo h1 {
-  font-weight: 300;
-  font-size: 36px;
-  margin-top: 17px;
-}
-
-.nav .buttons a {
+.buttons button {
   padding: 10px 30px;
-  text-decoration: none;
+  border: 0;
+  /* border: 1px solid #EFF5F5; */
+  margin-right: 10px;
+  font-size: 15px;
+  background-color: transparent;
+  font-family: 'Poppins';
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  border-left: 1px solid #ffffff;
+  border-right: 1px solid #fff;
+}
+
+.buttons button a {
   color: #fff;
+  text-decoration: none;
+}
+
+.buttons button:hover {
+  box-shadow: 0px 0 10px rgba(0, 0, 0, .62);
+  border-radius: 20px;
   cursor: pointer;
-  border: 1px solid #fff;
-  margin-top: -190px;
-  margin-bottom: 40px;
-  border-radius: 4px;
-  transform: translateY(30%);
-  transition: 0.4s;
+  transform: scale(110%);
+  /* margin-right: 0px; */
+  transition: 0.5s;
 }
-
-.nav .buttons a:hover {
-  background-color: #fff;
-  color: rgb(98, 118, 177);
-  box-shadow: 0 0 40px rgba(174, 182, 255, 0.76);
-  border-radius: 30px;
-}
-
 
 .container {
   display: flex;
@@ -748,7 +752,50 @@ footer .heading {
   color: #fff;
   margin-bottom: 10px;
 }
+.icon-ham-burger .fa-solid{
+  display: none;
+}
 @media (max-width : 700px) {
+  .main {
+    margin-top: 236px;
+}
+  .nav {
+    width: 417.6500000000001px !important;
+    padding: 10px 10px;
+    /* margin-top: 40px; */
+    margin-left: -39px;
+    display: flex;
+    flex-direction: column;
+
+}
+.logo h1 {
+    font-size: 27px !important;
+    width: 300px;
+}
+.nav-links{
+    margin-top: -20px;
+}
+.nav-links li a {
+    font-size: 13px;
+    width: 60px;
+}
+.buttons{
+  margin-left: -93px;
+}
+.buttons button {
+  padding: 10px 25px;
+  border: 0;
+  /* border: 1px solid #EFF5F5; */
+  margin-right: -31px;
+  margin-left: 40px;
+  font-size: 15px;
+  background-color: transparent;
+  font-family: 'Poppins';
+  /* border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  border-left: 1px solid #ffffff;
+  border-right: 1px solid #fff; */
+}
 .container
 {
     width: 100%;
@@ -762,6 +809,29 @@ footer .heading {
 }
 .content img {
   width: 337px;
+}
+.nav .buttons a {
+  padding: 10px 30px;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid #fff;
+  margin-top: -190px;
+  margin-bottom: 40px;
+  border-radius: 4px;
+  transform: translateY(30%);
+  transition: 0.4s;
+  margin-left: 20px;
+}
+.icon i {
+  font-size: 30px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  padding: 10px;
+  margin-right: -40px;
+  margin-left: 17px;
+  margin-top: 21px;
+  position: relative;
 }
 .container .content {
   margin: -150px 12px -136px 12px;
@@ -783,6 +853,11 @@ footer .heading {
   /* margin-bottom: 40px; */
   flex-direction: column;
   width: 377px;
+}
+.nav .logo h1 {
+  font-weight: 300;
+  font-size: 20px;
+  margin-top: 17px;
 }
 .phone img {
   width: 322px;

@@ -14,8 +14,9 @@ function getData() {
   Http.onreadystatechange = (e) => {
     console.log(e);
     if (Http.readyState === 4) {
-      if (Http.status === 200) {
+
         let jsonRes = JSON.parse(Http.responseText);
+        console.log(jsonRes)
         let out;
         var i = 1;
         jsonRes.map((data) => {
@@ -24,18 +25,14 @@ function getData() {
           out = `
                         <tr>
                         <td>${i++}</td>
-                        <td>${data.stDname}</td>
+                        <td>${data.username}</td>
                         <td>${data.email}</td>
-                        <td>${data.age}</td>
-                        <td>${data.contactno}</td>
-                        <td>${data.nationality}</td>
-                        <td>${data.placeofBIrth}</td>
-                        <td>${data.level}</td>
+                        <td>${data.phone}</td>
                         </tr>
                         `;
           showdata.innerHTML += out;
         });
-      }
+    
     }
   };
   console.log("hello");
